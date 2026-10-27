@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entre o Legado e a Continuidade · Requalificação do CEAC de Iracemápolis</title>
+<meta name="description" content="Trabalho Final de Graduação de Matheus Kemp em Arquitetura e Urbanismo (2026): a requalificação do CEAC, Centro de Educação, Arte e Cultura de Iracemápolis (SP), prédio modernista de 1960.">
+<meta name="author" content="Matheus Kemp">
+<meta name="theme-color" content="#212431">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://matheus-kemp.github.io/ceac/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://matheus-kemp.github.io/ceac/">
+<meta property="og:site_name" content="TFG · Matheus Kemp">
+<meta property="og:title" content="Entre o Legado e a Continuidade">
+<meta property="og:description" content="Requalificação do CEAC de Iracemápolis (SP). Trabalho Final de Graduação de Matheus Kemp, Arquitetura e Urbanismo, 2026.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23212431'/%3E%3Cpath d='M7 14.5 16 7l9 7.5' fill='none' stroke='%23EA5C1F' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7 18.5 16 26l9-7.5' fill='none' stroke='%23D6D7D7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  /* Identidade do carimbo das pranchas: faixa navy, filete laranja, cinza claro,
+     rótulos ardósia, Palatino nos textos e Segoe UI nos rótulos. Só fontes do
+     sistema, para o site não depender de serviço externo. */
+  :root {
+    --navy: #212431;
+    --navy-2: #2A2E3D;
+    --navy-linha: #3A3F52;
+    --laranja: #EA5C1F;
+    --laranja-texto: #B4441A;
+    --cinza: #D6D7D7;
+    --cinza-2: #A9AEBA;
+    --ardosia: #4F5D75;
+    --texto: #212427;
+    --texto-2: #383D49;
+    --papel: #EDEEEE;
+    --papel-2: #E3E4E5;
+    --linha: #CBCDD0;
+    --existente: #7E8594;
+    --concreto: #9EA2A8;
+    --serif: "Palatino Linotype", Palatino, "Book Antiqua", "URW Palladio L", P052, "TeX Gyre Pagella", Georgia, serif;
+    --sans: "Segoe UI", Selawik, system-ui, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --margem: clamp(1rem, 5vw, 3.5rem);
+    --barra: 4rem;
+    --largura: 75rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+  body {
+    background: var(--papel);
+    color: var(--texto);
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+  ::selection { background: var(--laranja); color: #fff; }
+  :focus-visible { outline: 2px solid var(--laranja); outline-offset: 3px; }
+
+  .pular {
+    position: absolute; left: var(--margem); top: -4rem; z-index: 100;
+    background: var(--laranja); color: #fff; padding: .6rem 1rem;
+    font-family: var(--sans); font-size: .9rem; text-decoration: none;
+  }
+  .pular:focus { top: .75rem; }
+
+  /* ============ RÓTULOS (como os campos do carimbo) ============ */
+  .rotulo {
+    display: inline-block;
+    position: relative;
+    padding-bottom: .55rem;
+    font-family: var(--sans);
+    font-weight: 350;
+    font-size: .78rem;
+    line-height: 1.3;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ardosia);
+  }
+  /* o filete laranja começa um pouco antes do rótulo e cobre pouco mais da metade */
+  .rotulo::after {
+    content: "";
+    position: absolute;
+    left: -.5rem;
+    bottom: 0;
+    width: calc(56% + .5rem);
+    height: 3px;
+    background: var(--laranja);
+  }
+  .campo {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 350;
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ardosia);
+  }
+
+  /* ============ BARRA DE NAVEGAÇÃO ============ */
+  .barra {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    height: var(--barra);
+    background: var(--navy);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  .barra.rolou { border-bottom-color: var(--navy-linha); }
+  .barra-dentro {
+    max-width: calc(var(--largura) + 2 * var(--margem));
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 var(--margem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .marca {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: .78rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .marca svg { width: 1.6rem; height: 1.6rem; flex: none; }
+  .menu { display: flex; gap: clamp(1rem, 2.2vw, 2.25rem); list-style: none; }
+  .menu a {
+    position: relative;
+    display: block;
+    padding: .45rem 0;
+    color: var(--cinza);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: .86rem;
+    letter-spacing: .03em;
+    transition: color .2s;
+  }
+  .menu a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: .1rem;
+    width: 0; height: 2px;
+    background: var(--laranja);
+    transition: width .25s;
+  }
+  .menu a:hover, .menu a[aria-current="true"] { color: #fff; }
+  .menu a:hover::after, .menu a[aria-current="true"]::after { width: 100%; }
+  .menu-botao {
+    display: none;
+    align-items: center;
+    gap: .55rem;
+    padding: .5rem .8rem;
+    background: none;
+    border: 1px solid var(--navy-linha);
+    border-radius: 2px;
+    color: var(--cinza);
+    font-family: var(--sans);
+    font-size: .75rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .menu-icone { position: relative; width: 16px; height: 10px; border-top: 2px solid; border-bottom: 2px solid; }
+  .menu-icone::after { content: ""; position: absolute; left: 0; right: 0; top: 2px; height: 2px; background: currentColor; }
+
+  /* ============ CAPA ============ */
+  .capa {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: calc(var(--barra) + clamp(2.5rem, 9vh, 6rem)) var(--margem) clamp(1.75rem, 5vh, 3rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+    background: var(--navy);
+    color: #fff;
+  }
+  .capa-dentro { width: 100%; max-width: var(--largura); margin: 0 auto; }
+  .capa .rotulo { color: var(--cinza); }
+  .capa-texto {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 2rem 4rem;
+    align-items: end;
+    margin-top: 2.25rem;
+  }
+  .titulo { font-family: var(--serif); font-weight: 400; line-height: 1; }
+  .titulo span { display: block; }
+  .titulo .con {
+    font-style: italic;
+    font-size: clamp(1.35rem, 3vw, 2.3rem);
+    line-height: 1.3;
+    color: var(--cinza);
+  }
+  .titulo .forte {
+    font-weight: 700;
+    /* ao lado do texto de abertura, o título acompanha a largura da coluna */
+    font-size: clamp(2.6rem, 8.8vw - 1rem, 6.2rem);
+    letter-spacing: -.01em;
+    line-height: 1.02;
+  }
+  .titulo .novo { color: var(--laranja); }
+  .subtitulo {
+    margin-top: 1.5rem;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    color: var(--cinza);
+  }
+  .abertura { max-width: 36ch; font-size: 1.15rem; line-height: 1.6; color: var(--cinza); }
+
+  .ficha {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+    border-top: 1px solid var(--navy-linha);
+  }
+  .ficha > div { padding: 1.1rem 1.5rem 1.2rem 0; }
+  .ficha dt {
+    margin-bottom: .35rem;
+    font-family: var(--sans);
+    font-weight: 350;
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--cinza-2);
+  }
+  .ficha dd { font-size: 1.05rem; line-height: 1.4; color: #fff; }
+  /* o bloco laranja da "folha" no carimbo */
+  .ficha .ano { min-width: 9.5rem; padding: 1rem 1.5rem 1.1rem; background: var(--laranja); }
+  .ficha .ano dt { font-style: italic; font-weight: 300; letter-spacing: .1em; color: #fff; }
+  .ficha .ano dd { font-family: var(--sans); font-weight: 350; font-size: 2.3rem; line-height: 1; }
+
+  /* ============ SEÇÕES ============ */
+  .secao {
+    padding: clamp(4rem, 9vw, 7rem) var(--margem);
+    border-top: 1px solid var(--linha);
+    scroll-margin-top: calc(var(--barra) - 1px);
+  }
+  .capa + .secao { border-top: 0; }
+  .grade {
+    max-width: var(--largura);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 13rem minmax(0, 1fr);
+    gap: 1.5rem 4rem;
+  }
+  .grade > .lateral { padding-top: .6rem; }
+  .grade > .lateral ~ .lateral,
+  .grade > .lateral ~ .lateral + * { margin-top: 3.5rem; }
+  .rotulo-bloco { font-size: 1rem; font-weight: 400; line-height: 1.3; }
+  .secao h2 {
+    max-width: 22ch;
+    margin-bottom: 1.75rem;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: var(--navy);
+  }
+  .secao h2 em { color: var(--laranja-texto); }
+  .secao p { max-width: 64ch; margin-bottom: 1.15rem; color: var(--texto-2); }
+  .secao p:last-child { margin-bottom: 0; }
+  .revelar > .titulo-bloco:first-child { margin-top: 0; }
+  .secao h3.titulo-bloco {
+    margin: 3.25rem 0 1rem;
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--navy);
+  }
+  .secao .chaves { margin-top: 1.75rem; font-family: var(--sans); font-size: .85rem; letter-spacing: .02em; color: var(--ardosia); }
+  .chaves strong { font-weight: 600; }
+
+  /* ============ OBJETIVOS ============ */
+  .objetivos { max-width: 42rem; margin-top: 2rem; list-style: none; border-bottom: 1px solid var(--linha); }
+  .objetivos li {
+    display: grid;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: baseline;
+    padding: 1.15rem 0;
+    border-top: 1px solid var(--linha);
+  }
+  .objetivos .n { font-family: var(--sans); font-weight: 350; font-size: .82rem; letter-spacing: .14em; color: var(--ardosia); }
+  .objetivos .t { color: var(--texto); }
+
+  /* ============ MÉTODO ============ */
+  .etapas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; list-style: none; }
+  .etapa {
+    padding: 1.5rem 1.5rem 1.6rem;
+    background: var(--papel-2);
+    border: 1px solid var(--linha);
+    border-top: 3px solid var(--navy);
+    transition: border-top-color .3s, transform .3s;
+  }
+  .etapa:hover { border-top-color: var(--laranja); transform: translateY(-3px); }
+  .etapa h3 { margin: .55rem 0 .5rem; font-family: var(--serif); font-weight: 700; font-size: 1.25rem; color: var(--navy); }
+  .secao .etapa p { font-size: .98rem; }
+
+  /* ============ O LUGAR ============ */
+  .tempo { max-width: 46rem; margin-top: .5rem; list-style: none; border-left: 2px solid var(--linha); }
+  .tempo li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: .2rem 1.25rem;
+    padding: 0 0 1.5rem 1.6rem;
+  }
+  .tempo li:last-child { padding-bottom: 0; }
+  .tempo li::before {
+    content: "";
+    position: absolute;
+    left: -7px; top: .5rem;
+    width: 12px; height: 12px;
+    background: var(--papel);
+    border: 2px solid var(--existente);
+  }
+  .tempo .quando { font-family: var(--sans); font-weight: 600; font-size: .95rem; letter-spacing: .03em; color: var(--navy); }
+  .tempo .oque { color: var(--texto-2); }
+  .tempo .hoje::before { background: var(--laranja); border-color: var(--laranja); }
+  .tempo .hoje .quando { color: var(--laranja-texto); }
+  .secao .fonte { margin-top: 1.25rem; font-family: var(--sans); font-size: .78rem; color: var(--ardosia); }
+
+  .preserva {
+    max-width: 56rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 2.5rem;
+    list-style: none;
+  }
+  .preserva li { position: relative; padding: .95rem 0 .95rem 1.5rem; border-top: 1px solid var(--linha); color: var(--texto-2); }
+  .preserva li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 1.55rem;
+    width: .55rem; height: .55rem;
+    background: var(--existente);
+  }
+  .preserva strong { color: var(--texto); font-weight: 700; }
+
+  .condicoes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; max-width: 56rem; }
+  .condicao { padding-top: 1rem; border-top: 4px solid var(--ardosia); }
+  .condicao h4 { margin: .3rem 0 .4rem; font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+  .secao .condicao p { margin: 0; font-size: .98rem; }
+
+  /* ============ HISTÓRIA ============ */
+  .marcos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 52rem;
+    margin: 2.25rem 0 .5rem;
+    list-style: none;
+    border-top: 1px solid var(--linha);
+  }
+  .marcos li { padding: 1rem 1.25rem 0 0; }
+  .marcos .ano-marco {
+    display: block;
+    margin-bottom: .35rem;
+    font-family: var(--sans);
+    font-weight: 350;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--navy);
+  }
+  .marcos li:last-child .ano-marco { color: var(--laranja-texto); }
+  .marcos .oque { display: block; font-size: .95rem; line-height: 1.45; color: var(--texto-2); }
+  .tempo .nome-uso { color: var(--texto); font-weight: 700; }
+  .epigrafe { margin-top: 3.25rem; }
+  .epigrafe .citacao { margin-top: 0; }
+  .epigrafe .traducao { margin: .9rem 0 0 1.5rem; font-family: var(--sans); font-size: .9rem; color: var(--ardosia); }
+
+  /* ============ REFERÊNCIAS ============ */
+  .referencias { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; margin-top: 2rem; list-style: none; }
+  .referencia {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.5rem 1.6rem;
+    background: var(--papel-2);
+    border: 1px solid var(--linha);
+    border-top: 3px solid var(--navy);
+  }
+  .referencia h3 { margin: .55rem 0 .6rem; font-family: var(--serif); font-weight: 700; font-size: 1.25rem; line-height: 1.25; color: var(--navy); }
+  .secao .referencia p { font-size: .98rem; }
+  .secao .referencia .licao {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--linha);
+    color: var(--texto);
+  }
+  .licao .campo { margin-bottom: .35rem; color: var(--laranja-texto); }
+
+  /* ============ PROPOSTA ============ */
+  .escura { background: var(--navy); color: var(--cinza); border-top: 0; }
+  .escura .rotulo { color: var(--cinza); }
+  .escura h2 { color: #fff; }
+  .escura h2 em { color: var(--laranja); }
+  .escura p { color: var(--cinza); }
+  .escura + .secao { border-top: 0; }
+
+  .corte { max-width: 52rem; margin-top: 2.75rem; }
+  .corte svg { width: 100%; height: auto; }
+  .legenda {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem 2rem;
+    margin-top: 1.5rem;
+    list-style: none;
+  }
+  .legenda li { padding-top: .8rem; border-top: 3px solid var(--c); font-size: .95rem; line-height: 1.5; color: var(--cinza); }
+  .legenda strong { display: block; margin-bottom: .2rem; color: #fff; }
+  .legenda .l-antigo { --c: var(--cinza); }
+  .legenda .l-marquise { --c: #8C93A3; }
+  .legenda .l-anexo { --c: var(--laranja); }
+  .secao .nota-corte { margin-top: 1.25rem; font-family: var(--sans); font-size: .78rem; color: var(--cinza-2); }
+
+  .gestos { list-style: none; border-bottom: 1px solid var(--linha); }
+  .gestos li {
+    display: grid;
+    grid-template-columns: 2.6rem minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 1.35rem 0;
+    border-top: 1px solid var(--linha);
+  }
+  .gestos .n {
+    display: grid;
+    place-items: center;
+    width: 2.6rem; height: 2.6rem;
+    background: var(--laranja);
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 350;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .gestos h4 { margin-bottom: .25rem; font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+  .secao .gestos p { margin: 0; }
+
+  .setores { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .setor { padding: 1.4rem 1.5rem 1.5rem; background: var(--papel-2); border: 1px solid var(--linha); border-top: 4px solid var(--c); }
+  .setor h4 { margin: .35rem 0 .45rem; font-size: 1.2rem; font-weight: 700; color: var(--navy); }
+  .secao .setor p { margin: 0; font-size: .98rem; }
+  .setor.antigo, .camada.antigo { --c: var(--existente); }
+  .setor.marquise, .camada.marquise { --c: var(--concreto); }
+  .setor.anexo, .camada.anexo { --c: var(--laranja); }
+  .setor.praca { --c: var(--ardosia); }
+
+  .camadas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: .25rem; }
+  .camada { padding-top: 1rem; border-top: 4px solid var(--c); }
+  .camada h4 { margin: .3rem 0 .4rem; font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+  .secao .camada p { margin: 0; font-size: .98rem; }
+  .citacao {
+    max-width: 34ch;
+    margin: 2.75rem 0 0;
+    padding-left: 1.5rem;
+    border-left: 3px solid var(--laranja);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+    line-height: 1.35;
+    color: var(--navy);
+  }
+  .secao .citacao p { margin: 0; max-width: none; color: inherit; }
+  .citacao cite { display: block; margin-top: .75rem; font-family: var(--sans); font-style: normal; font-size: .78rem; letter-spacing: .02em; color: var(--ardosia); }
+  .aviso {
+    max-width: 52rem;
+    margin-top: 3rem;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--ardosia);
+    background: var(--papel-2);
+    font-family: var(--sans);
+    font-size: .92rem;
+    color: var(--texto-2);
+  }
+
+  /* ============ SOBRE ============ */
+  .pessoas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 3rem; margin-top: .5rem; }
+  .pessoa {
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--linha);
+  }
+  /* retrato 4:5; sem a foto na pasta fotos/, ficam as iniciais */
+  .retrato {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--navy);
+    color: var(--cinza);
+    font-family: var(--sans);
+    font-weight: 350;
+    font-size: 1.6rem;
+    letter-spacing: .14em;
+  }
+  .retrato::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 56%; height: 4px;
+    background: var(--laranja);
+  }
+  .retrato img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .pessoa .nome { margin: .5rem 0 .4rem; font-size: 1.75rem; line-height: 1.2; color: var(--navy); }
+  .pessoa .det { font-size: .98rem; color: var(--texto-2); }
+  .pessoa .links { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; margin-top: 1rem; list-style: none; }
+  .pessoa .links a, .rodape a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--laranja);
+    overflow-wrap: anywhere;
+    transition: color .2s;
+  }
+  .pessoa .links a { font-family: var(--sans); font-size: .92rem; color: var(--navy); }
+  .pessoa .links a:hover { color: var(--laranja-texto); }
+
+  /* ============ RODAPÉ ============ */
+  .rodape { padding: clamp(3.5rem, 8vw, 5rem) var(--margem) 2rem; background: var(--navy); color: var(--cinza); }
+  .rodape-grade {
+    max-width: var(--largura);
+    margin: 0 auto 3rem;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+  .rodape h2 { max-width: 18ch; margin-bottom: .9rem; font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.15; color: #fff; }
+  .rodape h2 em { color: var(--laranja); }
+  .rodape p { max-width: 40ch; font-size: .98rem; }
+  .rodape h3 {
+    margin-bottom: .9rem;
+    font-family: var(--sans);
+    font-weight: 350;
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--cinza-2);
+  }
+  .rodape ul { list-style: none; }
+  .rodape li { padding: .3rem 0; }
+  .rodape a { color: #fff; }
+  .rodape a:hover { color: var(--laranja); }
+  .rodape-base {
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--navy-linha);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .5rem 1.5rem;
+    font-family: var(--sans);
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--cinza-2);
+  }
+
+  /* ============ ANIMAÇÃO (só com JavaScript e sem pedido de menos movimento) ============ */
+  .js .revelar { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+  .js .revelar.visivel { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js .revelar { opacity: 1; transform: none; transition: none; }
+    .etapa, .etapa:hover { transition: none; transform: none; }
+  }
+
+  /* ============ TELAS MENORES ============ */
+  /* com oito seções, o menu vira botão antes do resto do layout mudar */
+  @media (max-width: 1180px) {
+    .js .menu-botao { display: inline-flex; }
+    .js .menu {
+      display: none;
+      position: absolute;
+      top: var(--barra); left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      padding: .25rem var(--margem) 1rem;
+      background: var(--navy);
+      border-bottom: 1px solid var(--navy-linha);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, .25);
+    }
+    .js .barra.aberta .menu { display: flex; }
+    .js .menu a { padding: .85rem 0; font-size: 1rem; border-top: 1px solid var(--navy-linha); }
+    .js .menu a::after { display: none; }
+    .js .menu a[aria-current="true"] { color: #fff; box-shadow: inset 3px 0 0 var(--laranja); padding-left: .85rem; }
+    html:not(.js) .barra { position: static; height: auto; }
+    html:not(.js) .barra-dentro { flex-wrap: wrap; padding-top: .9rem; padding-bottom: .9rem; }
+    html:not(.js) .menu { flex-wrap: wrap; gap: .25rem 1.25rem; }
+    html:not(.js) .capa { padding-top: 3rem; }
+  }
+
+  @media (max-width: 960px) {
+    .grade { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+    .grade > .lateral { padding-top: 0; }
+    .grade > .lateral ~ .lateral { margin-top: 2.75rem; }
+    .grade > .lateral ~ .lateral + * { margin-top: 0; }
+    .capa-texto { grid-template-columns: minmax(0, 1fr); }
+    .titulo .forte { font-size: clamp(2.4rem, 12vw, 6.2rem); }
+    .ficha { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ficha > div:nth-child(n + 3) { border-top: 1px solid var(--navy-linha); }
+    .ficha > div.ano {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-top: .5rem;
+      border-top: 0;
+    }
+    .rodape-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rodape-grade > :first-child { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 640px) {
+    body { font-size: 1.03rem; }
+    .etapas, .setores, .pessoas, .preserva, .camadas, .legenda, .condicoes { grid-template-columns: minmax(0, 1fr); }
+    .tempo li { grid-template-columns: minmax(0, 1fr); }
+    .marcos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .marcos li:nth-child(n + 3) { margin-top: 1rem; border-top: 1px solid var(--linha); }
+    .pessoa { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1.1rem; }
+    .pessoa .nome { font-size: 1.45rem; }
+    .ficha dd { font-size: 1rem; }
+    .rodape-grade { grid-template-columns: minmax(0, 1fr); }
+    .rodape-base { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<a class="pular" href="#resumo">Pular para o conteúdo</a>
+
+<header class="barra" id="barra">
+  <div class="barra-dentro">
+    <a class="marca" href="#topo" aria-label="Início">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 14.5 16 7l9 7.5" fill="none" stroke="#EA5C1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 18.5 16 26l9-7.5" fill="none" stroke="#D6D7D7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>TFG · CEAC</span>
+    </a>
+    <nav aria-label="Seções">
+      <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu"><span class="menu-icone" aria-hidden="true"></span><span>Menu</span></button>
+      <ul class="menu" id="menu">
+        <li><a href="#resumo">Resumo</a></li>
+        <li><a href="#objetivos">Objetivos</a></li>
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#historia">História</a></li>
+        <li><a href="#lugar">O lugar</a></li>
+        <li><a href="#referencias">Referências</a></li>
+        <li><a href="#proposta">A proposta</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="capa" id="topo" aria-labelledby="titulo">
+  <div class="capa-dentro revelar">
+    <span class="rotulo">Trabalho Final de Graduação</span>
+    <div class="capa-texto">
+      <div>
+        <h1 class="titulo" id="titulo">
+          <span class="con">Entre o</span>
+          <span class="forte">Legado</span>
+          <span class="con">e a</span>
+          <span class="forte novo">Continuidade</span>
+        </h1>
+        <p class="subtitulo">Requalificação do CEAC de Iracemápolis</p>
+      </div>
+      <p class="abertura">O prédio modernista de 1960 que abrigava o Centro de Educação, Arte e Cultura está fechado desde 2020. Este trabalho propõe devolvê-lo à cidade: restaurado, ampliado por um anexo que inverte o seu telhado e ligado a ele por uma marquise e uma praça.</p>
+    </div>
+  </div>
+
+  <dl class="ficha capa-dentro revelar">
+    <div><dt>Autor</dt><dd>Matheus Kemp</dd></div>
+    <div><dt>Orientação</dt><dd>Prof. Dr. Daniel Andrioli de Lima</dd></div>
+    <div><dt>Curso</dt><dd>Arquitetura e Urbanismo</dd></div>
+    <div><dt>Local</dt><dd>Iracemápolis · SP</dd></div>
+    <div class="ano"><dt>Ano</dt><dd>2026</dd></div>
+  </dl>
+</section>
+
+<section class="secao" id="resumo">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">01 · Resumo</span></div>
+    <div class="revelar">
+      <h2>Um marco da cidade à espera de <em>continuidade</em>.</h2>
+      <p>Inaugurado em 1960 como Grupo Escolar “Antônio Cândido de Camargo”, o prédio modernista do centro de Iracemápolis foi escola, centro profissionalizante e, a partir de 2008, o Centro de Educação, Arte e Cultura Professora Jane Cosenza (CEAC), referência para a formação artística da cidade. Em 2020 foi interditado por problemas estruturais, e os cursos se espalharam pela cidade, muitas vezes em espaços sem estrutura adequada.</p>
+      <p>Este trabalho propõe a requalificação arquitetônica e urbanística do conjunto, para transformá-lo em um centro cultural contemporâneo, funcional e integrado à vida comunitária. O prédio de 1960 é restaurado e volta a fazer o que já fazia bem; um anexo novo recebe o que ele nunca teve espaço para abrigar; uma marquise e uma praça ligam os dois entre si e à rua.</p>
+      <p>A proposta é um ato de reconstrução simbólica e sustentável: respeita a linguagem modernista original e constrói o novo com tijolos ecológicos feitos com cinza do bagaço de cana-de-açúcar, resíduo da agroindústria que formou o município.</p>
+      <p class="chaves"><strong>Palavras-chave:</strong> requalificação&nbsp;· arquitetura&nbsp;· centro&nbsp;cultural&nbsp;· sustentabilidade&nbsp;· memória&nbsp;coletiva</p>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="objetivos">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">02 · Objetivos</span></div>
+    <div class="revelar">
+      <h2>O que este trabalho se <em>propõe</em>.</h2>
+      <p>Desenvolver uma proposta de requalificação para o antigo CEAC que encontre o equilíbrio entre o velho e o novo: respeitar a herança modernista do edifício e, ao mesmo tempo, dar a ele as condições que um centro cultural de hoje exige.</p>
+      <ol class="objetivos">
+        <li><span class="n">01</span><span class="t">Devolver o CEAC à cidade como centro cultural contemporâneo, funcional e integrado à vida comunitária.</span></li>
+        <li><span class="n">02</span><span class="t">Preservar o que o prédio de 1960 tem de valor: a fachada de tijolo aparente com pilares pintados, o piso de caquinhos, os painéis pintados e a ventilação natural.</span></li>
+        <li><span class="n">03</span><span class="t">Criar os espaços que os cursos pedem e o prédio nunca teve: salas de música com isolamento acústico, estúdio de dança, auditório e convivência coberta.</span></li>
+        <li><span class="n">04</span><span class="t">Construir o novo com material regional e sustentável, o tijolo de cinza do bagaço de cana, ligando a obra à história econômica de Iracemápolis.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="metodo">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">03 · Método</span></div>
+    <div class="revelar">
+      <h2>Como o trabalho foi <em>conduzido</em>.</h2>
+      <p>Uma pesquisa qualitativa e aplicada, organizada em quatro etapas.</p>
+      <ol class="etapas">
+        <li class="etapa">
+          <span class="campo">Etapa 01</span>
+          <h3>Revisão bibliográfica</h3>
+          <p>Cultura, memória e cidade (Santos, Geertz, De Botton, Dalrymple); requalificação e arquitetura moderna (Lemos, Lucio Costa, Niemeyer); o centro cultural como lugar de invenção e de livre apropriação (Milanesi, Arantes).</p>
+        </li>
+        <li class="etapa">
+          <span class="campo">Etapa 02</span>
+          <h3>Pesquisa documental</h3>
+          <p>A formação de Iracemápolis, ligada aos engenhos e à cana-de-açúcar, e a trajetória do prédio desde 1960, com documentos da Prefeitura e da Secretaria da Cultura e o resgate histórico de José Zanardo.</p>
+        </li>
+        <li class="etapa">
+          <span class="campo">Etapa 03</span>
+          <h3>Levantamento</h3>
+          <p>Visita e registro fotográfico do edifício em março de 2026, diagnóstico das patologias, medidas, entorno, fluxos urbanos e legislação.</p>
+        </li>
+        <li class="etapa">
+          <span class="campo">Etapa 04</span>
+          <h3>Projeto</h3>
+          <p>Síntese do diagnóstico em programa e partido, desenvolvidos em modelo BIM no Revit, com estudos de volume no SketchUp.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="historia">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">04 · História</span></div>
+    <div class="revelar">
+      <h2>Uma cidade que nasceu da <em>cultura</em>.</h2>
+      <p>Iracemápolis começou por volta de 1890 como o povoado de Santa Cruz da Boa Vista, formado sobretudo por negros libertos que se fixaram nas encostas do Morro Azul. Uma dança que encenava o tempo da escravidão com estacas de madeira deu ao lugar o apelido de “Bate-Pau”: desde a origem, a cultura organiza o espaço da cidade.</p>
+      <p>Com a chegada de imigrantes portugueses, alemães, suíços e italianos, a cana-de-açúcar tornou-se a base da economia, e os engenhos se espalharam pelo território, como o da família Kemp, fundado na década de 1930. Em 1923 o povoado passou a Distrito de Paz com o nome de Iracemápolis, que junta o indígena Iracema, “lábios de mel”, ao grego <i>polis</i>, “cidade”. A emancipação veio em 1953, e a década de 1960 trouxe a modernização urbana e uma série de edifícios públicos modernistas.</p>
+      <ol class="marcos">
+        <li><span class="ano-marco">c. 1890</span><span class="oque">Povoado de Santa Cruz da Boa Vista, o “Bate-Pau”</span></li>
+        <li><span class="ano-marco">1923</span><span class="oque">Distrito de Paz com o nome de Iracemápolis</span></li>
+        <li><span class="ano-marco">1953</span><span class="oque">Emancipação do município</span></li>
+        <li><span class="ano-marco">1960</span><span class="oque">Inauguração do Grupo Escolar, hoje CEAC</span></li>
+      </ol>
+      <p class="fonte">Fonte: Zanardo (2008), <cite>Iracemápolis: fatos e retratos</cite>.</p>
+    </div>
+
+    <div class="lateral"><span class="rotulo">O prédio</span></div>
+    <div class="revelar">
+      <h3 class="titulo-bloco">Seis décadas de uso público.</h3>
+      <p>O Grupo Escolar “Antônio Cândido de Camargo” foi inaugurado em 1960, na gestão do prefeito Antônio Ometto, como um dos primeiros grandes investimentos do município recém-emancipado. Desde então o prédio mudou de função várias vezes, da escola de primeiras letras ao ensino profissionalizante, sempre com uso público. Cada uma dessas camadas deixou nele uma parte da memória da cidade, e é esse acúmulo que o projeto assume como valor.</p>
+      <ol class="tempo">
+        <li><span class="quando">1960</span><span class="oque"><span class="nome-uso">Grupo Escolar “Antônio Cândido de Camargo”.</span> Início das atividades escolares.</span></li>
+        <li><span class="quando">1976</span><span class="oque">O Grupo Escolar muda para o Jardim Iracema.</span></li>
+        <li><span class="quando">1977–1982</span><span class="oque">Prédio fechado, sem uso.</span></li>
+        <li><span class="quando">1983–1988</span><span class="oque"><span class="nome-uso">EE Agrupada de Iracemápolis</span>, depois EE “João Ometto”: ensino estadual.</span></li>
+        <li><span class="quando">1989–1994</span><span class="oque"><span class="nome-uso">CIPI, Centro de Iniciação Profissionalizante Profa. Jane Cosenza</span>: formação profissional na cidade.</span></li>
+        <li><span class="quando">1995</span><span class="oque"><span class="nome-uso">EE “Cesarino Borba”</span>, por um ano, durante a reforma do seu prédio sede.</span></li>
+        <li><span class="quando">1996–2007</span><span class="oque"><span class="nome-uso">Escola Municipal Dona Leontina de Oliveira</span>: ensino fundamental, até voltar ao Jardim Luiz Ometto.</span></li>
+        <li><span class="quando">2008</span><span class="oque">Reforma do prédio para o novo uso cultural e educativo.</span></li>
+        <li><span class="quando">2008–2020</span><span class="oque"><span class="nome-uso">CEAC, Centro de Educação, Arte e Cultura Profa. Jane Cosenza</span>: 20 cursos de curta duração em música, artes, moda e ofícios.</span></li>
+        <li><span class="quando">2020</span><span class="oque">Interdição do prédio por condições estruturais. Os cursos passam a acontecer espalhados pela cidade.</span></li>
+        <li class="hoje"><span class="quando">2026</span><span class="oque">Este trabalho propõe recuperar o prédio e reativá-lo como centro cultural.</span></li>
+      </ol>
+      <p class="fonte">Fontes: pesquisa histórica de José Zanardo; Secretaria de Cultura de Iracemápolis; elaboração do autor (2026).</p>
+    </div>
+
+    <div class="lateral"><span class="rotulo">O CEAC</span></div>
+    <div class="revelar">
+      <h3 class="titulo-bloco">Referência para a formação artística.</h3>
+      <p>Entre 2008 e 2020, o prédio abrigou o Centro de Educação, Arte e Cultura Professora Jane Cosenza, com vinte cursos de curta duração em música, artes, moda e ofícios. Em uma cidade do porte de Iracemápolis, um equipamento assim é um dos principais lugares de convivência, de formação artística e de difusão do conhecimento.</p>
+      <p>A interdição de 2020 espalhou os cursos pela cidade, muitas vezes em espaços sem estrutura adequada. Mais do que uma falha técnica, o fechamento abriu uma fratura na identidade coletiva e no orgulho da cidade. Recuperar o CEAC é reconhecer a capacidade da arquitetura de guardar memória e reativar um lugar de encontro e aprendizado.</p>
+      <figure class="epigrafe">
+        <blockquote class="citacao" lang="la"><p>Sic transit gloria mundi, sed memoria manet.</p></blockquote>
+        <figcaption class="traducao">“Assim passa a glória do mundo, mas a memória permanece.” Epígrafe da monografia.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="lugar">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">05 · O lugar</span></div>
+    <div class="revelar">
+      <h2>No <em>centro</em> da vida da cidade.</h2>
+      <p>O CEAC ocupa o lote 145 da área central de Iracemápolis, entre as ruas Cesarino Borba, Duque de Caxias e Dom Pedro II, perto da Praça Matriz, de edifícios públicos, de escolas e do eixo comercial. São cerca de 4.000 m² de terreno e 1.130 m² construídos, no caminho do dia a dia da população.</p>
+      <p>Ao contrário de equipamentos culturais levados para a periferia, o CEAC faz parte de um conjunto cívico consolidado. A centralidade garante público o tempo todo e dispensa novas obras de infraestrutura: os recursos da intervenção ficam no próprio prédio e na sua área externa.</p>
+    </div>
+
+    <h3 class="lateral rotulo-bloco"><span class="rotulo">Clima</span></h3>
+    <div class="revelar">
+      <div class="condicoes">
+        <div class="condicao">
+          <span class="campo">Chuva</span>
+          <h4>Verões chuvosos</h4>
+          <p>Clima tropical de altitude, com as chuvas concentradas de outubro a março. A cobertura precisa de uma drenagem que dê conta das chuvas fortes.</p>
+        </div>
+        <div class="condicao">
+          <span class="campo">Calor</span>
+          <h4>Conforto passivo</h4>
+          <p>Nos meses quentes, a resposta vem do próprio edifício: ventilação cruzada e o efeito chaminé do telhado borboleta.</p>
+        </div>
+        <div class="condicao">
+          <span class="campo">Vento</span>
+          <h4>Do sul-sudeste</h4>
+          <p>O vento dominante entra pelas janelas baixas das salas voltadas ao sul e sai pelas janelas altas a norte, renovando o ar continuamente.</p>
+        </div>
+      </div>
+      <p class="fonte">Fontes: Meteoblue (2026); Alvares et al. (2013).</p>
+    </div>
+
+    <div class="lateral"><span class="rotulo">Diagnóstico</span></div>
+    <div class="revelar">
+      <h3 class="titulo-bloco">Abandonado, não arruinado.</h3>
+      <p>O levantamento de março de 2026 mostrou que quase todas as patologias vêm de um único sistema: a drenagem do telhado borboleta. Com as calhas do vale tomadas por vegetação e telhas deslocadas, a água escorre pelas paredes, apodrece os pisos de madeira, solta o reboco e trava as janelas que faziam a ventilação. Fundações, alvenarias, vigas da cobertura e a fachada de tijolo continuam íntegras: o prédio pede restauro técnico, não demolição.</p>
+      <h3 class="titulo-bloco">O que se preserva</h3>
+      <ul class="preserva">
+        <li><strong>A fachada</strong> de tijolo cerâmico aparente com pilares de concreto pintados de amarelo claro, assinatura do prédio.</li>
+        <li><strong>O piso de caquinhos</strong> cerâmicos do corredor, técnica brasileira de meados do século XX, hoje rara.</li>
+        <li><strong>Os painéis pintados</strong> com paisagens rurais, assinados por Cândido de Souza.</li>
+        <li><strong>A ventilação natural:</strong> janelas altas a norte, janelas baixas a sul e o telhado borboleta.</li>
+        <li><strong>A estrutura da cobertura</strong> em vigas de concreto aparente e telha de barro, recuperável.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="referencias">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">06 · Referências</span></div>
+    <div class="revelar">
+      <h2>Três obras que <em>ensinam</em>.</h2>
+      <p>Três projetos que enfrentaram problemas parecidos com os do CEAC: um lugar de cultura sem estrutura, um patrimônio abandonado e um edifício antigo que precisou receber um programa novo.</p>
+      <ul class="referencias">
+        <li class="referencia">
+          <span class="campo">Nacajuca, México · 2021</span>
+          <h3>Casa de Música</h3>
+          <p>Centro cultural e escola de música do Colectivo C733, feito com materiais da região para uma comunidade em que a música e as celebrações organizam a vida coletiva.</p>
+          <p class="licao"><span class="campo">Para o CEAC</span>O melhor do projeto está entre os volumes: um espaço público que é, ele mesmo, programa. Aqui ele ganha cobertura por causa dos verões chuvosos, e o material local vira o tijolo de cinza de cana.</p>
+        </li>
+        <li class="referencia">
+          <span class="campo">Araras, SP · 2009</span>
+          <h3>Centro Cultural de Araras</h3>
+          <p>A antiga estação ferroviária de 1877, tomada pelo desgaste e pelo vandalismo depois do fim dos trens, convertida em centro cultural pelo AUM Arquitectos a partir de concurso nacional.</p>
+          <p class="licao"><span class="campo">Para o CEAC</span>O novo se distingue do antigo sem imitá-lo, e uma marquise leve e permeável articula os fluxos e cria a convivência entre os edifícios.</p>
+        </li>
+        <li class="referencia">
+          <span class="campo">São Paulo, SP · 2007</span>
+          <h3>Cinemateca Brasileira</h3>
+          <p>O antigo Matadouro Municipal, de 1887 e tombado, convertido em centro cultural e acervo audiovisual na requalificação conduzida pelo arquiteto Nelson Dupré.</p>
+          <p class="licao"><span class="campo">Para o CEAC</span>Mostrar as camadas históricas do edifício sem cenografia, e definir desde o início o plano do conjunto, mesmo que a obra aconteça por etapas.</p>
+        </li>
+      </ul>
+      <p class="fonte">Fontes: ArchDaily; Concursosdeprojeto.org; Arquivo CONDEPHAAT (2026).</p>
+    </div>
+  </div>
+</section>
+
+<section class="secao escura" id="proposta">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">07 · A proposta</span></div>
+    <div class="revelar">
+      <h2>O que coleta passa a <em>projetar</em>.</h2>
+      <p>O prédio de 1960 tem telhado borboleta: dois panos que caem para um vale central, coletam a chuva e iluminam o corredor pelo zenital. O anexo propõe a geometria oposta: dois panos que sobem para uma cumeeira central, com as calhas nos beirais, externas e visíveis, e luz que entra por janelas altas voltadas ao sul. Entre os dois, a marquise é o lugar onde os dois tempos convivem sem hierarquia.</p>
+
+      <figure class="corte">
+        <svg viewBox="0 0 720 240" role="img" aria-labelledby="corte-titulo corte-desc">
+          <title id="corte-titulo">Corte esquemático do conjunto</title>
+          <desc id="corte-desc">À esquerda, o prédio de 1960 com telhado borboleta, cujas águas correm para o vale central. Ao centro, a marquise. À direita, o anexo com a cumeeira invertida, que leva a água para os beirais e recebe a luz do sul por janelas altas.</desc>
+          <defs>
+            <marker id="seta-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 9 5 0 9z" fill="#A9AEBA"/></marker>
+            <marker id="seta-l" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 9 5 0 9z" fill="#EA5C1F"/></marker>
+          </defs>
+          <line x1="12" y1="214" x2="708" y2="214" stroke="#4F5D75" stroke-width="1.5"/>
+          <!-- prédio de 1960: telhado borboleta (V) -->
+          <path d="M34 214V72M300 72V214" stroke="#D6D7D7" stroke-width="2.5" fill="none"/>
+          <path d="M26 69.6 167 112 308 69.6" stroke="#D6D7D7" stroke-width="3.5" fill="none" stroke-linejoin="miter"/>
+          <path d="M71 68 137 88" stroke="#A9AEBA" stroke-width="1.6" fill="none" marker-end="url(#seta-c)"/>
+          <path d="M263 68 197 88" stroke="#A9AEBA" stroke-width="1.6" fill="none" marker-end="url(#seta-c)"/>
+          <path d="M167 120V152" stroke="#A9AEBA" stroke-width="1.6" stroke-dasharray="4 4" fill="none" marker-end="url(#seta-c)"/>
+          <!-- marquise -->
+          <rect x="300" y="140" width="128" height="7" fill="#8C93A3"/>
+          <!-- anexo: cumeeira invertida (Λ) com janelas altas voltadas ao sul -->
+          <path d="M428 214V127.6M690 214V112.2" stroke="#EA5C1F" stroke-width="2.5" fill="none"/>
+          <path d="M414 130.6 554 100M554 64 704 117" stroke="#EA5C1F" stroke-width="3.5" fill="none"/>
+          <rect x="551" y="66" width="6" height="32" fill="rgba(234,92,31,.18)" stroke="#F4A27C" stroke-width="1.2"/>
+          <path d="M527 93 458 108.5" stroke="#EA5C1F" stroke-width="1.6" fill="none" marker-end="url(#seta-l)"/>
+          <path d="M585 61 659 87" stroke="#EA5C1F" stroke-width="1.6" fill="none" marker-end="url(#seta-l)"/>
+          <path d="M408 128.5v6h10v-6M698 114.5v6h10v-6" stroke="#EA5C1F" stroke-width="1.6" fill="none"/>
+          <circle cx="470" cy="28" r="7" fill="none" stroke="#F4A27C" stroke-width="1.6"/>
+          <path d="M481 36 545 80" stroke="#F4A27C" stroke-width="1.6" stroke-dasharray="5 4" fill="none" marker-end="url(#seta-l)"/>
+          <path d="M562 86 604 128" stroke="#F4A27C" stroke-width="1.4" stroke-dasharray="3 5" fill="none"/>
+        </svg>
+        <figcaption>
+          <ul class="legenda">
+            <li class="l-antigo"><strong>Prédio de 1960</strong>Telhado borboleta: a chuva corre para o vale central.</li>
+            <li class="l-marquise"><strong>Marquise</strong>Concreto aparente: convivência coberta entre os dois tempos.</li>
+            <li class="l-anexo"><strong>Anexo</strong>Cumeeira invertida: a água vai para os beirais e a luz entra pelo sul.</li>
+          </ul>
+          <p class="nota-corte">Corte esquemático, sem escala, do sul (à esquerda) para o norte.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="secao" aria-label="A proposta: partido, programa e materialidade">
+  <div class="grade">
+    <h3 class="lateral rotulo-bloco"><span class="rotulo">Os cinco gestos</span></h3>
+    <div class="revelar">
+      <ol class="gestos">
+        <li><span class="n">1</span><div><h4>Reativação bioclimática</h4><p>As calhas do vale e as janelas altas a norte são restauradas, e a ventilação natural por efeito chaminé volta a funcionar. O sistema original é reativado, não substituído.</p></div></li>
+        <li><span class="n">2</span><div><h4>Marquise integradora</h4><p>Uma cobertura plana de concreto aparente liga o prédio antigo ao anexo e cria a convivência coberta que o conjunto não tinha.</p></div></li>
+        <li><span class="n">3</span><div><h4>Anexo em cumeeira invertida</h4><p>A cobertura em Λ dá pé-direito alto às salas de música e dança, leva a água para os beirais e traz luz difusa do sul. Aletas de concreto aparente dão ritmo e sombra à fachada voltada para a marquise.</p></div></li>
+        <li><span class="n">4</span><div><h4>Caixas acústicas</h4><p>As salas de música recebem paredes duplas de drywall com câmara de ar e lã de rocha, dentro da envoltória do anexo.</p></div></li>
+        <li><span class="n">5</span><div><h4>Distribuição por aptidão</h4><p>Cada uso vai para o volume que já tem as condições que ele pede: moda, artes manuais, artes visuais e administração no prédio de 1960; música, dança, informática e o auditório no anexo.</p></div></li>
+      </ol>
+    </div>
+
+    <h3 class="lateral rotulo-bloco"><span class="rotulo">Programa</span></h3>
+    <div class="revelar">
+      <div class="setores">
+        <article class="setor antigo">
+          <span class="campo">Prédio de 1960</span>
+          <h4>Oficinas e administração</h4>
+          <p>Oito salas de oficina: três de moda e confecção, três de artes visuais (pintura em tela, pintura em tecido e modelagem em biscuit), artes manuais e uma sala multiuso. Também a Secretaria Municipal da Cultura, a direção do CEAC, a sala de reunião e sanitários refeitos, com sanitário acessível.</p>
+        </article>
+        <article class="setor anexo">
+          <span class="campo">Anexo</span>
+          <h4>Música, dança e auditório</h4>
+          <p>Quatro salas de música (cordas, canto e sopro, percussão e banda), estúdio de dança, laboratório de informática e um auditório de 134 lugares voltado para a marquise.</p>
+        </article>
+        <article class="setor marquise">
+          <span class="campo">Marquise</span>
+          <h4>Convivência coberta</h4>
+          <p>Cobertura plana de concreto aparente entre os dois prédios: sombra, encontro e passagem.</p>
+        </article>
+        <article class="setor praca">
+          <span class="campo">Área externa</span>
+          <h4>Praça</h4>
+          <p>Praça contemporânea em torno do ipê-rosa existente, aberta à cidade, com as árvores de grande porte preservadas.</p>
+        </article>
+      </div>
+    </div>
+
+    <h3 class="lateral rotulo-bloco"><span class="rotulo">Materialidade</span></h3>
+    <div class="revelar">
+      <p>Distinguir sem competir: três camadas, cada uma legível por si.</p>
+      <div class="camadas">
+        <div class="camada antigo">
+          <span class="campo">1960</span>
+          <h4>Tijolo e pilares pintados</h4>
+          <p>Tijolo cerâmico aparente e pilares de concreto pintados de amarelo claro, preservados integralmente.</p>
+        </div>
+        <div class="camada marquise">
+          <span class="campo">Marquise</span>
+          <h4>Concreto aparente</h4>
+          <p>Sem ornamento e sem referência histórica: honestamente contemporânea.</p>
+        </div>
+        <div class="camada anexo">
+          <span class="campo">Anexo</span>
+          <h4>Tijolo de cinza de cana</h4>
+          <p>O resíduo da agroindústria que formou a cidade passa a construir o seu centro cultural.</p>
+        </div>
+      </div>
+      <blockquote class="citacao">
+        <p>É a continuidade pelo contraste: o legado reconhecido exatamente por aquilo que o novo não imita.</p>
+      </blockquote>
+      <p class="aviso">Projeto em desenvolvimento. Plantas, cortes e imagens entram aqui depois da banca final.</p>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="sobre">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">08 · Sobre</span></div>
+    <div class="revelar">
+      <h2>Autoria e <em>orientação</em>.</h2>
+      <div class="pessoas">
+        <div class="pessoa">
+          <div class="retrato"><span aria-hidden="true">MK</span><img src="fotos/matheus-kemp.jpg" alt="Foto de Matheus Kemp" loading="lazy" onerror="this.remove()"></div>
+          <div>
+            <span class="campo">Autor</span>
+            <p class="nome">Matheus Kemp</p>
+            <p class="det">Arquitetura e Urbanismo · Centro Universitário Einstein de Limeira (UniEinstein) · 2026</p>
+            <ul class="links">
+              <li><a href="mailto:matheuskemp14@gmail.com">matheuskemp14@gmail.com</a></li>
+              <li><a href="https://lattes.cnpq.br/1953264248520496" target="_blank" rel="noopener">Currículo Lattes</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pessoa">
+          <div class="retrato"><span aria-hidden="true">DL</span><img src="fotos/daniel-andrioli.jpg" alt="Foto do Prof. Dr. Daniel Andrioli de Lima" loading="lazy" onerror="this.remove()"></div>
+          <div>
+            <span class="campo">Orientação</span>
+            <p class="nome">Prof. Dr. Daniel Andrioli de Lima</p>
+            <p class="det">Centro Universitário Einstein de Limeira (UniEinstein)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="rodape-grade">
+    <div>
+      <h2>O trabalho <em>completo</em></h2>
+      <p>A monografia, as pranchas e a apresentação ficam disponíveis aqui depois da banca final.</p>
+    </div>
+    <div>
+      <h3>Contato</h3>
+      <ul>
+        <li><a href="mailto:matheuskemp14@gmail.com">matheuskemp14@gmail.com</a></li>
+        <li><a href="https://lattes.cnpq.br/1953264248520496" target="_blank" rel="noopener">Currículo Lattes</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Projeto</h3>
+      <ul>
+        <li>Centro de Educação, Arte e Cultura</li>
+        <li>Iracemápolis · SP</li>
+      </ul>
+    </div>
+  </div>
+  <div class="rodape-base">
+    <span>© 2026 Matheus Kemp</span>
+    <span>Trabalho Final de Graduação · Arquitetura e Urbanismo</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var barra = document.getElementById('barra');
+    var botao = barra.querySelector('.menu-botao');
+    var links = barra.querySelectorAll('.menu a');
+
+    // linha sob a barra depois de rolar
+    function aoRolar() { barra.classList.toggle('rolou', window.scrollY > 8); }
+    window.addEventListener('scroll', aoRolar, { passive: true });
+    aoRolar();
+
+    // menu do celular
+    function abrirMenu(abrir) {
+      barra.classList.toggle('aberta', abrir);
+      botao.setAttribute('aria-expanded', String(abrir));
+      botao.lastElementChild.textContent = abrir ? 'Fechar' : 'Menu';
+    }
+    botao.addEventListener('click', function () { abrirMenu(!barra.classList.contains('aberta')); });
+    links.forEach(function (a) { a.addEventListener('click', function () { abrirMenu(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') abrirMenu(false); });
+
+    // o título nunca passa da coluna, mesmo quando falta a Palatino e entra uma serifada mais larga
+    var fortes = document.querySelectorAll('.titulo .forte');
+    function ajustarTitulo() {
+      var razao = 1;
+      fortes.forEach(function (e) { e.style.fontSize = ''; });
+      fortes.forEach(function (e) { if (e.scrollWidth > e.clientWidth) razao = Math.min(razao, e.clientWidth / e.scrollWidth); });
+      if (razao < 1) {
+        var tam = parseFloat(getComputedStyle(fortes[0]).fontSize) * razao * 0.98;
+        fortes.forEach(function (e) { e.style.fontSize = tam + 'px'; });
+      }
+    }
+    ajustarTitulo();
+    window.addEventListener('resize', ajustarTitulo);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustarTitulo);
+
+    var revelar = document.querySelectorAll('.revelar');
+    if (!('IntersectionObserver' in window)) {
+      revelar.forEach(function (el) { el.classList.add('visivel'); });
+      return;
+    }
+
+    // blocos aparecem ao entrar na tela
+    var aparecer = new IntersectionObserver(function (itens) {
+      itens.forEach(function (item) {
+        if (item.isIntersecting) {
+          item.target.classList.add('visivel');
+          aparecer.unobserve(item.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+    revelar.forEach(function (el) { aparecer.observe(el); });
+
+    // seção atual destacada no menu
+    var porId = {};
+    links.forEach(function (a) { porId[a.getAttribute('href').slice(1)] = a; });
+    var atual = new IntersectionObserver(function (itens) {
+      itens.forEach(function (item) {
+        if (!item.isIntersecting) return;
+        links.forEach(function (a) { a.removeAttribute('aria-current'); });
+        if (porId[item.target.id]) porId[item.target.id].setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(porId).concat('topo').forEach(function (id) { atual.observe(document.getElementById(id)); });
+  })();
+</script>
+
+</body>
+</html>
