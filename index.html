@@ -301,6 +301,9 @@
     color: var(--ardosia);
   }
   .dados dd { line-height: 1.45; color: var(--texto); }
+  .dados .parte { display: block; }
+  .dados .parte + .parte { margin-top: .35rem; }
+  .dados .parte strong { font-weight: 700; }
 
   /* ============ OBJETIVOS ============ */
   .objetivos { max-width: 42rem; margin-top: 2rem; list-style: none; border-bottom: 1px solid var(--linha); }
@@ -710,7 +713,7 @@
         <div><dt>Terreno</dt><dd>5.516 m²</dd></div>
         <div><dt>Área construída</dt><dd>1.130 m² no prédio de 1960 e cerca de 650 m² no anexo</dd></div>
         <div><dt>Materiais do novo</dt><dd>Tijolo de cinza do bagaço de cana, concreto aparente e telha termoacústica</dd></div>
-        <div class="largo"><dt>Programa</dt><dd>8 oficinas, administração e Secretaria da Cultura, 4 salas de música, estúdio de dança, informática e auditório de 134 lugares</dd></div>
+        <div class="largo"><dt>Programa</dt><dd><span class="parte"><strong>Prédio de 1960:</strong> oficinas de moda e confecção, pintura em tela e em tecido, biscuit e artes manuais (crochê e tricô), sala multiuso, administração e Secretaria da Cultura.</span> <span class="parte"><strong>Anexo:</strong> salas de música (cordas, canto e sopro, percussão e banda), estúdio de dança, informática e auditório de 134 lugares.</span></dd></div>
       </dl>
     </div>
   </div>
@@ -808,7 +811,7 @@
         </figure>
         <figure>
           <img src="fotos/historia/aerea-canaviais.jpg" alt="Vista aérea antiga de Iracemápolis com o Grupo Escolar no limite entre as casas e os canaviais." width="480" height="270" loading="lazy">
-          <figcaption><span class="data-foto">Sem data</span>O prédio no limite entre a cidade e os canaviais. Fonte: Câmara Municipal de Iracemápolis.</figcaption>
+          <figcaption><span class="data-foto">Anos 1960</span>O prédio no limite entre a cidade e os canaviais. Fonte: Câmara Municipal de Iracemápolis.</figcaption>
         </figure>
       </div>
       <ol class="tempo">
