@@ -384,26 +384,6 @@
   .epigrafe .citacao { margin-top: 0; }
   .epigrafe .traducao { margin: .9rem 0 0 1.5rem; font-family: var(--sans); font-size: .9rem; color: var(--ardosia); }
 
-  /* ============ REFERÊNCIAS ============ */
-  .referencias { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; margin-top: 2rem; list-style: none; }
-  .referencia {
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem 1.5rem 1.6rem;
-    background: var(--papel-2);
-    border: 1px solid var(--linha);
-    border-top: 3px solid var(--navy);
-  }
-  .referencia h3 { margin: .55rem 0 .6rem; font-family: var(--serif); font-weight: 700; font-size: 1.25rem; line-height: 1.25; color: var(--navy); }
-  .secao .referencia p { font-size: .98rem; }
-  .secao .referencia .licao {
-    margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid var(--linha);
-    color: var(--texto);
-  }
-  .licao .campo { margin-bottom: .35rem; color: var(--laranja-texto); }
-
   /* ============ PROPOSTA ============ */
   .escura { background: var(--navy); color: var(--cinza); border-top: 0; }
   .escura .rotulo { color: var(--cinza); }
@@ -659,7 +639,6 @@
         <li><a href="#metodo">Método</a></li>
         <li><a href="#historia">História</a></li>
         <li><a href="#lugar">O lugar</a></li>
-        <li><a href="#referencias">Referências</a></li>
         <li><a href="#proposta">A proposta</a></li>
         <li><a href="#sobre">Sobre</a></li>
       </ul>
@@ -852,59 +831,29 @@
   </div>
 </section>
 
-<section class="secao" id="referencias">
-  <div class="grade">
-    <div class="lateral"><span class="rotulo">06 · Referências</span></div>
-    <div class="revelar">
-      <h2>Três obras que <em>ensinam</em>.</h2>
-      <p>Três projetos que enfrentaram problemas parecidos com os do CEAC: um lugar de cultura sem estrutura, um patrimônio abandonado e um edifício antigo que precisou receber um programa novo.</p>
-      <ul class="referencias">
-        <li class="referencia">
-          <span class="campo">Nacajuca, México · 2021</span>
-          <h3>Casa de Música</h3>
-          <p>Centro cultural e escola de música do Colectivo C733, feito com materiais da região para uma comunidade em que a música e as celebrações organizam a vida coletiva.</p>
-          <p class="licao"><span class="campo">Para o CEAC</span>O melhor do projeto está entre os volumes: um espaço público que é, ele mesmo, programa. Aqui ele ganha cobertura por causa dos verões chuvosos, e o material local vira o tijolo de cinza de cana.</p>
-        </li>
-        <li class="referencia">
-          <span class="campo">Araras, SP · 2009</span>
-          <h3>Centro Cultural de Araras</h3>
-          <p>A antiga estação ferroviária de 1877, tomada pelo desgaste e pelo vandalismo depois do fim dos trens, convertida em centro cultural pelo AUM Arquitectos a partir de concurso nacional.</p>
-          <p class="licao"><span class="campo">Para o CEAC</span>O novo se distingue do antigo sem imitá-lo, e uma marquise leve e permeável articula os fluxos e cria a convivência entre os edifícios.</p>
-        </li>
-        <li class="referencia">
-          <span class="campo">São Paulo, SP · 2007</span>
-          <h3>Cinemateca Brasileira</h3>
-          <p>O antigo Matadouro Municipal, de 1887 e tombado, convertido em centro cultural e acervo audiovisual na requalificação conduzida pelo arquiteto Nelson Dupré.</p>
-          <p class="licao"><span class="campo">Para o CEAC</span>Mostrar as camadas históricas do edifício sem cenografia, e definir desde o início o plano do conjunto, mesmo que a obra aconteça por etapas.</p>
-        </li>
-      </ul>
-      <p class="fonte">Fontes: ArchDaily; Concursosdeprojeto.org; Arquivo CONDEPHAAT (2026).</p>
-    </div>
-  </div>
-</section>
-
 <section class="secao escura" id="proposta">
   <div class="grade">
-    <div class="lateral"><span class="rotulo">07 · A proposta</span></div>
+    <div class="lateral"><span class="rotulo">06 · A proposta</span></div>
     <div class="revelar">
       <h2>O que coleta passa a <em>projetar</em>.</h2>
-      <p>O prédio de 1960 tem telhado borboleta: dois panos que caem para um vale central, coletam a chuva e iluminam o corredor pelo zenital. O anexo propõe a geometria oposta: dois panos que sobem para uma cumeeira central, com as calhas nos beirais, externas e visíveis, e luz que entra por janelas altas voltadas ao sul. Entre os dois, a marquise é o lugar onde os dois tempos convivem sem hierarquia.</p>
+      <p>O prédio de 1960 tem telhado borboleta: dois panos que caem para um vale, coletam a chuva e iluminam o corredor pelo zenital. O anexo propõe a geometria oposta: dois panos que sobem para uma cumeeira central, com as calhas nos beirais, externas e visíveis, e luz que entra por janelas altas voltadas ao sul. Entre os dois, a marquise é o lugar onde os dois tempos convivem sem hierarquia.</p>
 
       <figure class="corte">
         <svg viewBox="0 0 720 240" role="img" aria-labelledby="corte-titulo corte-desc">
           <title id="corte-titulo">Corte esquemático do conjunto</title>
-          <desc id="corte-desc">À esquerda, o prédio de 1960 com telhado borboleta, cujas águas correm para o vale central. Ao centro, a marquise. À direita, o anexo com a cumeeira invertida, que leva a água para os beirais e recebe a luz do sul por janelas altas.</desc>
+          <desc id="corte-desc">À esquerda, o prédio de 1960 com telhado borboleta, cujas águas correm para o vale, mais próximo da fachada sul. Ao centro, a marquise. À direita, o anexo com a cumeeira invertida, que leva a água para os beirais e recebe a luz do sul por janelas altas.</desc>
           <defs>
             <marker id="seta-c" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 9 5 0 9z" fill="#A9AEBA"/></marker>
             <marker id="seta-l" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 1 9 5 0 9z" fill="#EA5C1F"/></marker>
           </defs>
           <line x1="12" y1="214" x2="708" y2="214" stroke="#4F5D75" stroke-width="1.5"/>
-          <!-- prédio de 1960: telhado borboleta (V) -->
-          <path d="M34 214V72M300 72V214" stroke="#D6D7D7" stroke-width="2.5" fill="none"/>
-          <path d="M26 69.6 167 112 308 69.6" stroke="#D6D7D7" stroke-width="3.5" fill="none" stroke-linejoin="miter"/>
-          <path d="M71 68 137 88" stroke="#A9AEBA" stroke-width="1.6" fill="none" marker-end="url(#seta-c)"/>
-          <path d="M263 68 197 88" stroke="#A9AEBA" stroke-width="1.6" fill="none" marker-end="url(#seta-c)"/>
-          <path d="M167 120V152" stroke="#A9AEBA" stroke-width="1.6" stroke-dasharray="4 4" fill="none" marker-end="url(#seta-c)"/>
+          <!-- prédio de 1960: telhado borboleta (V), como na fachada leste (folha 07/09); vale deslocado para o sul -->
+          <path d="M47.6 214V85M300 214V77" stroke="#D6D7D7" stroke-width="2.5" fill="none"/>
+          <path d="M38 80.8 135.3 134M136.6 150 314 68" stroke="#D6D7D7" stroke-width="3.5" fill="none"/>
+          <path d="M131 136v16h9" stroke="#D6D7D7" stroke-width="1.6" fill="none"/>
+          <path d="M60 80.5 110 108.5" stroke="#A9AEBA" stroke-width="1.6" fill="none" marker-end="url(#seta-c)"/>
+          <path d="M270 78.4 192 114.4" stroke="#A9AEBA" stroke-width="1.6" fill="none" marker-end="url(#seta-c)"/>
+          <path d="M136 160V192" stroke="#A9AEBA" stroke-width="1.6" stroke-dasharray="4 4" fill="none" marker-end="url(#seta-c)"/>
           <!-- marquise -->
           <rect x="300" y="140" width="128" height="7" fill="#8C93A3"/>
           <!-- anexo: cumeeira invertida (Λ) com janelas altas voltadas ao sul -->
@@ -920,7 +869,7 @@
         </svg>
         <figcaption>
           <ul class="legenda">
-            <li class="l-antigo"><strong>Prédio de 1960</strong>Telhado borboleta: a chuva corre para o vale central.</li>
+            <li class="l-antigo"><strong>Prédio de 1960</strong>Telhado borboleta: a chuva corre para o vale.</li>
             <li class="l-marquise"><strong>Marquise</strong>Concreto aparente: convivência coberta entre os dois tempos.</li>
             <li class="l-anexo"><strong>Anexo</strong>Cumeeira invertida: a água vai para os beirais e a luz entra pelo sul.</li>
           </ul>
@@ -1000,7 +949,7 @@
 
 <section class="secao" id="sobre">
   <div class="grade">
-    <div class="lateral"><span class="rotulo">08 · Sobre</span></div>
+    <div class="lateral"><span class="rotulo">07 · Sobre</span></div>
     <div class="revelar">
       <h2>Autoria e <em>orientação</em>.</h2>
       <div class="pessoas">
