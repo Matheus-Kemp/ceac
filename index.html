@@ -286,6 +286,22 @@
   .secao .chaves { margin-top: 1.75rem; font-family: var(--sans); font-size: .85rem; letter-spacing: .02em; color: var(--ardosia); }
   .chaves strong { font-weight: 600; }
 
+  /* ============ FICHA TÉCNICA ============ */
+  .secao.ficha-tecnica { padding-top: clamp(2.5rem, 5vw, 3.5rem); padding-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+  .dados { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; border-bottom: 1px solid var(--linha); }
+  .dados > div { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1rem; padding: .85rem 0; border-top: 1px solid var(--linha); }
+  .dados > .largo { grid-column: 1 / -1; }
+  .dados dt {
+    padding-top: .2rem;
+    font-family: var(--sans);
+    font-weight: 350;
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ardosia);
+  }
+  .dados dd { line-height: 1.45; color: var(--texto); }
+
   /* ============ OBJETIVOS ============ */
   .objetivos { max-width: 42rem; margin-top: 2rem; list-style: none; border-bottom: 1px solid var(--linha); }
   .objetivos li {
@@ -334,6 +350,12 @@
   .tempo .oque { color: var(--texto-2); }
   .tempo .hoje::before { background: var(--laranja); border-color: var(--laranja); }
   .tempo .hoje .quando { color: var(--laranja-texto); }
+  /* fotos antigas do prédio, antes da linha do tempo */
+  .arquivo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 52rem; margin: 2rem 0 2.5rem; }
+  .arquivo figure { margin: 0; }
+  .arquivo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; background: var(--papel-2); }
+  .arquivo figcaption { margin-top: .6rem; font-family: var(--sans); font-size: .82rem; line-height: 1.45; color: var(--ardosia); }
+  .arquivo .data-foto { display: block; margin-bottom: .15rem; font-weight: 600; font-size: .95rem; letter-spacing: .03em; color: var(--navy); }
   .secao .fonte { margin-top: 1.25rem; font-family: var(--sans); font-size: .78rem; color: var(--ardosia); }
 
   .preserva {
@@ -609,7 +631,8 @@
 
   @media (max-width: 640px) {
     body { font-size: 1.03rem; }
-    .etapas, .setores, .pessoas, .preserva, .camadas, .legenda, .condicoes { grid-template-columns: minmax(0, 1fr); }
+    .etapas, .setores, .pessoas, .preserva, .camadas, .legenda, .condicoes, .arquivo, .dados { grid-template-columns: minmax(0, 1fr); }
+    .dados > div { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
     .tempo li { grid-template-columns: minmax(0, 1fr); }
     .marcos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .marcos li:nth-child(n + 3) { margin-top: 1rem; border-top: 1px solid var(--linha); }
@@ -672,6 +695,23 @@
     <div><dt>Local</dt><dd>Iracemápolis · SP</dd></div>
     <div class="ano"><dt>Ano</dt><dd>2026</dd></div>
   </dl>
+</section>
+
+<section class="secao ficha-tecnica" id="ficha" aria-labelledby="ficha-titulo">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo" id="ficha-titulo">Ficha técnica</span></div>
+    <div class="revelar">
+      <dl class="dados">
+        <div><dt>Uso</dt><dd>Centro cultural: restauro e ampliação</dd></div>
+        <div><dt>Endereço</dt><dd>R. Duque de Caxias, 145, Centro, Iracemápolis-SP</dd></div>
+        <div><dt>Prédio original</dt><dd>1960, Grupo Escolar “Antônio Cândido de Camargo”</dd></div>
+        <div><dt>Terreno</dt><dd>5.516 m²</dd></div>
+        <div><dt>Área construída</dt><dd>1.130 m² no prédio de 1960 e cerca de 650 m² no anexo</dd></div>
+        <div><dt>Materiais do novo</dt><dd>Tijolo de cinza do bagaço de cana, concreto aparente e telha termoacústica</dd></div>
+        <div class="largo"><dt>Programa</dt><dd>8 oficinas, administração e Secretaria da Cultura, 4 salas de música, estúdio de dança, informática e auditório de 134 lugares</dd></div>
+      </dl>
+    </div>
+  </div>
 </section>
 
 <section class="secao" id="resumo">
@@ -755,6 +795,20 @@
     <div class="revelar">
       <h3 class="titulo-bloco">Seis décadas de uso público.</h3>
       <p>O Grupo Escolar “Antônio Cândido de Camargo” foi inaugurado em 1960, na gestão do prefeito Antônio Ometto, como um dos primeiros grandes investimentos do município recém-emancipado. Desde então o prédio mudou de função várias vezes, da escola de primeiras letras ao ensino profissionalizante, sempre com uso público. Cada uma dessas camadas deixou nele uma parte da memória da cidade, e é esse acúmulo que o projeto assume como valor.</p>
+      <div class="arquivo">
+        <figure>
+          <img src="fotos/historia/1960-grupo-escolar.jpg" alt="Fotografia em preto e branco do Grupo Escolar em 1960: a barra térrea com aletas verticais, palmeiras na frente e o perfil em V do telhado na ponta." width="1020" height="693" loading="lazy">
+          <figcaption><span class="data-foto">1960</span>O Grupo Escolar recém-inaugurado. Fonte: <cite>Iracemápolis: fatos e retratos</cite>.</figcaption>
+        </figure>
+        <figure>
+          <img src="fotos/historia/anos-60-fachada.jpg" alt="Fotografia antiga, em tom sépia, da fachada do Grupo Escolar ritmada por aletas verticais, com eucaliptos ao fundo." width="1082" height="540" loading="lazy">
+          <figcaption><span class="data-foto">Anos 1960</span>A fachada ritmada pelas aletas verticais. Fonte: Secretaria da Cultura.</figcaption>
+        </figure>
+        <figure>
+          <img src="fotos/historia/aerea-canaviais.jpg" alt="Vista aérea antiga de Iracemápolis com o Grupo Escolar no limite entre as casas e os canaviais." width="480" height="270" loading="lazy">
+          <figcaption><span class="data-foto">Sem data</span>O prédio no limite entre a cidade e os canaviais. Fonte: Câmara Municipal de Iracemápolis.</figcaption>
+        </figure>
+      </div>
       <ol class="tempo">
         <li><span class="quando">1960</span><span class="oque"><span class="nome-uso">Grupo Escolar “Antônio Cândido de Camargo”.</span> Início das atividades escolares.</span></li>
         <li><span class="quando">1976</span><span class="oque">O Grupo Escolar muda para o Jardim Iracema.</span></li>
