@@ -350,12 +350,14 @@
   .tempo .oque { color: var(--texto-2); }
   .tempo .hoje::before { background: var(--laranja); border-color: var(--laranja); }
   .tempo .hoje .quando { color: var(--laranja-texto); }
-  /* fotos antigas do prédio, antes da linha do tempo */
-  .arquivo { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 52rem; margin: 2rem 0 2.5rem; }
-  .arquivo figure { margin: 0; }
-  .arquivo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; background: var(--papel-2); }
-  .arquivo figcaption { margin-top: .6rem; font-family: var(--sans); font-size: .82rem; line-height: 1.45; color: var(--ardosia); }
-  .arquivo .data-foto { display: block; margin-bottom: .15rem; font-weight: 600; font-size: .95rem; letter-spacing: .03em; color: var(--navy); }
+  /* fileiras de fotos: as antigas do prédio (História) e as do levantamento de 2026 (O lugar) */
+  .fotos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 52rem; margin: 2rem 0 2.5rem; }
+  .fotos:last-child { margin-bottom: 0; }
+  .fotos:has(+ .fonte) { margin-bottom: 1rem; }
+  .fotos figure { margin: 0; }
+  .fotos img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; background: var(--papel-2); }
+  .fotos figcaption { margin-top: .6rem; font-family: var(--sans); font-size: .82rem; line-height: 1.45; color: var(--ardosia); }
+  .fotos .data-foto { display: block; margin-bottom: .15rem; font-weight: 600; font-size: .95rem; letter-spacing: .03em; color: var(--navy); }
   .secao .fonte { margin-top: 1.25rem; font-family: var(--sans); font-size: .78rem; color: var(--ardosia); }
 
   .preserva {
@@ -631,7 +633,7 @@
 
   @media (max-width: 640px) {
     body { font-size: 1.03rem; }
-    .etapas, .setores, .pessoas, .preserva, .camadas, .legenda, .condicoes, .arquivo, .dados { grid-template-columns: minmax(0, 1fr); }
+    .etapas, .setores, .pessoas, .preserva, .camadas, .legenda, .condicoes, .fotos, .dados { grid-template-columns: minmax(0, 1fr); }
     .dados > div { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
     .tempo li { grid-template-columns: minmax(0, 1fr); }
     .marcos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -795,7 +797,7 @@
     <div class="revelar">
       <h3 class="titulo-bloco">Seis décadas de uso público.</h3>
       <p>O Grupo Escolar “Antônio Cândido de Camargo” foi inaugurado em 1960, na gestão do prefeito Antônio Ometto, como um dos primeiros grandes investimentos do município recém-emancipado. Desde então o prédio mudou de função várias vezes, da escola de primeiras letras ao ensino profissionalizante, sempre com uso público. Cada uma dessas camadas deixou nele uma parte da memória da cidade, e é esse acúmulo que o projeto assume como valor.</p>
-      <div class="arquivo">
+      <div class="fotos">
         <figure>
           <img src="fotos/historia/1960-grupo-escolar.jpg" alt="Fotografia em preto e branco do Grupo Escolar em 1960: a barra térrea com aletas verticais, palmeiras na frente e o perfil em V do telhado na ponta." width="1020" height="693" loading="lazy">
           <figcaption><span class="data-foto">1960</span>O Grupo Escolar recém-inaugurado. Fonte: <cite>Iracemápolis: fatos e retratos</cite>.</figcaption>
@@ -873,6 +875,20 @@
     <div class="revelar">
       <h3 class="titulo-bloco">Abandonado, não arruinado.</h3>
       <p>O levantamento de março de 2026 mostrou que quase todas as patologias vêm de um único sistema: a drenagem do telhado borboleta. Com as calhas do vale tomadas por vegetação e telhas deslocadas, a água escorre pelas paredes, apodrece os pisos de madeira, solta o reboco e trava as janelas que faziam a ventilação. Fundações, alvenarias, vigas da cobertura e a fachada de tijolo continuam íntegras: o prédio pede restauro técnico, não demolição.</p>
+      <div class="fotos">
+        <figure>
+          <img src="fotos/levantamento/calhas-vegetacao.jpg" alt="Calha do vale do telhado tomada por plantas, sob as telhas translúcidas do zenital." width="1200" height="800" loading="lazy">
+          <figcaption>Calhas do vale tomadas pela vegetação.</figcaption>
+        </figure>
+        <figure>
+          <img src="fotos/levantamento/telhas-deslocadas.jpg" alt="Cobertura vista de dentro, com telhas cerâmicas deslocadas e um vão aberto para o céu." width="1200" height="800" loading="lazy">
+          <figcaption>Telhas deslocadas: a água entra pela cobertura.</figcaption>
+        </figure>
+        <figure>
+          <img src="fotos/levantamento/piso-madeira.jpg" alt="Sala de aula vazia com o piso de madeira manchado e apodrecido pela água." width="1200" height="800" loading="lazy">
+          <figcaption>Piso de madeira apodrecido pelas infiltrações.</figcaption>
+        </figure>
+      </div>
       <h3 class="titulo-bloco">O que se preserva</h3>
       <ul class="preserva">
         <li><strong>A fachada</strong> de tijolo cerâmico aparente com pilares de concreto pintados de amarelo claro, assinatura do prédio.</li>
@@ -881,6 +897,21 @@
         <li><strong>A ventilação natural:</strong> janelas altas a norte, janelas baixas a sul e o telhado borboleta.</li>
         <li><strong>A estrutura da cobertura</strong> em vigas de concreto aparente e telha de barro, recuperável.</li>
       </ul>
+      <div class="fotos">
+        <figure>
+          <img src="fotos/levantamento/painel-pintado.jpg" alt="Painel pintado na parede com uma paisagem rural em moldura azul, com o reboco descascando nas bordas." width="1023" height="682" loading="lazy">
+          <figcaption>Painel pintado por Cândido de Souza.</figcaption>
+        </figure>
+        <figure>
+          <img src="fotos/levantamento/piso-caquinhos.jpg" alt="Piso de caquinhos cerâmicos vermelhos assentados em mosaico irregular." width="924" height="616" loading="lazy">
+          <figcaption>O piso de caquinhos do corredor.</figcaption>
+        </figure>
+        <figure>
+          <img src="fotos/levantamento/fachada-sul.jpg" alt="Fachada sul do prédio, de tijolo aparente com pilares claros, vista do jardim com palmeiras e um ipê florido." width="1170" height="780" loading="lazy">
+          <figcaption>A fachada sul de tijolo aparente, vista do jardim.</figcaption>
+        </figure>
+      </div>
+      <p class="fonte">Fotos: Matheus Kemp, levantamento de março de 2026.</p>
     </div>
   </div>
 </section>
