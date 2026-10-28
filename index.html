@@ -460,6 +460,38 @@
     color: var(--texto-2);
   }
 
+  /* ============ GALERIA ============ */
+  /* quadros já no lugar: quando a imagem existir, o <img> entra dentro do .quadro e cobre o aviso */
+  .galeria { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; max-width: 56rem; margin-top: 1.25rem; list-style: none; }
+  .galeria + .titulo-bloco { margin-top: 2.75rem; }
+  .galeria .destaque { grid-column: span 2; grid-row: span 2; }
+  .quadro {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 100%;
+    min-height: 100%;
+    aspect-ratio: 3 / 2;
+    padding: 1rem;
+    text-align: center;
+    background: var(--papel-2);
+    border: 1px dashed var(--existente);
+  }
+  .destaque .quadro { aspect-ratio: auto; }
+  .quadro img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .desenhos .quadro { background: #fff; }
+  .desenhos .quadro img { object-fit: contain; }
+  .vazio { font-family: var(--sans); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ardosia); }
+  .vazio strong { display: block; margin-bottom: .3rem; font-family: var(--serif); font-size: 1rem; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--navy); }
+  .destaque .vazio strong { font-size: 1.3rem; }
+
+  /* ============ LOCALIZAÇÃO ============ */
+  .endereco { font-family: var(--sans); }
+  .secao .endereco strong { font-weight: 600; color: var(--texto); }
+  .mapa { max-width: 56rem; aspect-ratio: 16 / 9; margin-top: 1.25rem; background: var(--papel-2); border: 1px solid var(--linha); }
+  .mapa iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .secao .fonte a { color: var(--ardosia); text-underline-offset: .15em; }
+
   /* ============ SOBRE ============ */
   .pessoas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 3rem; margin-top: .5rem; }
   .pessoa {
@@ -603,6 +635,12 @@
   @media (max-width: 640px) {
     body { font-size: 1.03rem; }
     .setores, .pessoas, .preserva, .camadas, .legenda, .condicoes, .fotos, .dados { grid-template-columns: minmax(0, 1fr); }
+    .galeria { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .galeria .destaque { grid-row: auto; }
+    .destaque .quadro { aspect-ratio: 3 / 2; }
+    /* com o destaque ocupando a linha toda, o último quadro fecha a grade sem sobrar buraco */
+    .galeria .destaque ~ li:last-child:nth-child(even) { grid-column: 1 / -1; }
+    .mapa { aspect-ratio: 1 / 1; }
     .dados > div { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
     .tempo li { grid-template-columns: minmax(0, 1fr); }
     .pessoa { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1.1rem; }
@@ -631,6 +669,8 @@
         <li><a href="#historia">História</a></li>
         <li><a href="#lugar">O lugar</a></li>
         <li><a href="#proposta">A proposta</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#localizacao">Localização</a></li>
         <li><a href="#sobre">Sobre</a></li>
       </ul>
     </nav>
@@ -947,9 +987,51 @@
   </div>
 </section>
 
+<section class="secao" id="galeria">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">06 · Galeria</span></div>
+    <div class="revelar">
+      <h2>O projeto em <em>imagens</em>.</h2>
+      <p>Os renders e os desenhos técnicos entram aqui quando estiverem prontos.</p>
+      <h3 class="titulo-bloco">Imagens</h3>
+      <ul class="galeria">
+          <li class="destaque"><div class="quadro"><span class="vazio"><strong>Vista do conjunto</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Fachada sul do prédio de 1960</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Marquise e praça</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Anexo e as aletas da fachada sul</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Auditório</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Sala de música</strong>Em produção</span></div></li>
+      </ul>
+      <h3 class="titulo-bloco">Desenhos</h3>
+      <ul class="galeria desenhos">
+          <li><div class="quadro"><span class="vazio"><strong>Implantação</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Planta do térreo</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Cobertura</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Cortes</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Fachadas</strong>Em produção</span></div></li>
+          <li><div class="quadro"><span class="vazio"><strong>Paisagismo</strong>Em produção</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="localizacao">
+  <div class="grade">
+    <div class="lateral"><span class="rotulo">07 · Localização</span></div>
+    <div class="revelar">
+      <h2>Onde <em>fica</em>.</h2>
+      <p class="endereco"><strong>Endereço:</strong> R. Duque de Caxias, 145, Centro, Iracemápolis-SP</p>
+      <div class="mapa">
+        <iframe src="https://maps.google.com/maps?q=R.%20Duque%20de%20Caxias%2C%20145%20-%20Centro%2C%20Iracem%C3%A1polis%20-%20SP&z=17&output=embed" title="Mapa com a localização do CEAC no centro de Iracemápolis" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+      <p class="fonte">Lote de esquina entre as ruas Duque de Caxias, Dom Pedro II e Cesarino Borba. <a href="https://www.google.com/maps/search/?api=1&query=R.%20Duque%20de%20Caxias%2C%20145%20-%20Centro%2C%20Iracem%C3%A1polis%20-%20SP" target="_blank" rel="noopener">Abrir no Google Maps</a></p>
+    </div>
+  </div>
+</section>
+
 <section class="secao" id="sobre">
   <div class="grade">
-    <div class="lateral"><span class="rotulo">06 · Sobre</span></div>
+    <div class="lateral"><span class="rotulo">08 · Sobre</span></div>
     <div class="revelar">
       <h2>Autoria e <em>orientação</em>.</h2>
       <div class="pessoas">
