@@ -461,29 +461,219 @@
   }
 
   /* ============ GALERIA ============ */
-  /* quadros já no lugar: quando a imagem existir, o <img> entra dentro do .quadro e cobre o aviso */
-  .galeria { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; max-width: 56rem; margin-top: 1.25rem; list-style: none; }
-  .galeria + .titulo-bloco { margin-top: 2.75rem; }
+  /* como no ArchDaily: mosaico na página e a galeria completa em tela cheia, com setas, contador e
+     miniaturas. Para pôr uma imagem, o <img> entra dentro do .quadro, antes do aviso "Em produção"
+     (que continua dando o título); data-grande, se houver, é a versão maior usada na tela cheia. */
+  .galeria { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; max-width: 56rem; margin-top: 1.75rem; list-style: none; }
   .galeria .destaque { grid-column: span 2; grid-row: span 2; }
+  /* com JavaScript ficam seis no mosaico, e o último mostra quantas faltam */
+  .js .galeria > li:nth-child(n + 7) { display: none; }
   .quadro {
     position: relative;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     height: 100%;
     min-height: 100%;
     aspect-ratio: 3 / 2;
     padding: 1rem;
+    overflow: hidden;
     text-align: center;
     background: var(--papel-2);
     border: 1px dashed var(--existente);
+    color: inherit;
+    font: inherit;
+    transition: border-color .2s;
   }
+  .js .quadro { cursor: zoom-in; }
+  .js .quadro:hover { border-color: var(--laranja); }
   .destaque .quadro { aspect-ratio: auto; }
-  .quadro img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .desenhos .quadro { background: #fff; }
-  .desenhos .quadro img { object-fit: contain; }
+  .quadro img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .js .quadro:hover img { transform: scale(1.03); }
+  .quadro:has(img) { border: 0; }
+  .desenho .quadro { background: #fff; }
+  .desenho .quadro img { object-fit: contain; }
   .vazio { font-family: var(--sans); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ardosia); }
   .vazio strong { display: block; margin-bottom: .3rem; font-family: var(--serif); font-size: 1rem; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--navy); }
   .destaque .vazio strong { font-size: 1.3rem; }
+  .mais {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .45rem;
+    background: rgba(33, 36, 49, .74);
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 350;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    line-height: 1;
+    transition: background-color .2s;
+  }
+  .mais small { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--cinza); }
+  .quadro:hover .mais { background: rgba(33, 36, 49, .86); }
+  .quadro.tem-mais { background: var(--navy); border: 1px solid var(--navy); }
+  .tem-mais .vazio { visibility: hidden; }
+  .ver-galeria {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    margin-top: 1.25rem;
+    padding: .75rem 1.1rem;
+    background: none;
+    border: 1px solid var(--navy);
+    border-radius: 2px;
+    color: var(--navy);
+    font-family: var(--sans);
+    font-size: .75rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+  }
+  .ver-galeria[hidden] { display: none; }
+  .ver-galeria svg { width: .95rem; height: .95rem; flex: none; }
+  .ver-galeria:hover { background: var(--navy); color: #fff; }
+
+  /* tela cheia: fundo quase preto, a imagem no meio, setas dos lados e miniaturas embaixo */
+  html.visor-aberto { overflow: hidden; }
+  .visor {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #14161D;
+    color: var(--cinza);
+    overscroll-behavior: contain;
+  }
+  .visor[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto auto; animation: visor-surge .25s ease; }
+  .visor::backdrop { background: #14161D; }
+  .visor-topo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    height: var(--barra);
+    padding: 0 var(--margem);
+    border-bottom: 1px solid var(--navy-linha);
+  }
+  .visor-nome {
+    overflow: hidden;
+    font-family: var(--sans);
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--cinza-2);
+  }
+  .visor-contador { font-family: var(--sans); font-size: .9rem; letter-spacing: .08em; font-variant-numeric: tabular-nums; color: #fff; }
+  .visor-fechar {
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .5rem .8rem;
+    background: none;
+    border: 1px solid var(--navy-linha);
+    border-radius: 2px;
+    color: var(--cinza);
+    font-family: var(--sans);
+    font-size: .75rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color .2s, border-color .2s;
+  }
+  .visor-fechar svg { width: .7rem; height: .7rem; }
+  .visor-fechar:hover { color: #fff; border-color: var(--cinza-2); }
+  .visor-palco {
+    position: relative;
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr) 5.5rem;
+    grid-template-rows: minmax(0, 1fr);
+    align-items: center;
+    padding: 1.5rem 0 1rem;
+    touch-action: pan-y pinch-zoom;
+  }
+  .visor-seta {
+    justify-self: center;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    background: none;
+    border: 1px solid var(--navy-linha);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color .2s, border-color .2s;
+  }
+  .visor-seta svg { width: 1.1rem; height: 1.1rem; }
+  .visor-seta:hover { background: var(--laranja); border-color: var(--laranja); }
+  /* a área da imagem mede a si mesma, para o quadro vazio caber inteiro em qualquer tela */
+  .visor-imagem { position: relative; align-self: stretch; container-type: size; display: flex; align-items: center; justify-content: center; }
+  .visor-imagem > * { animation: visor-surge .35s ease; }
+  .visor-imagem img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
+  .visor-vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+    width: min(100%, 60rem);
+    width: min(100cqw, 150cqh);
+    aspect-ratio: 3 / 2;
+    border: 1px dashed #4A5066;
+    font-family: var(--sans);
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--cinza-2);
+  }
+  .visor-vazio svg { width: 3.5rem; height: 3.5rem; }
+  .visor-legenda { min-height: 1.4em; padding: 0 var(--margem); text-align: center; font-size: 1.15rem; line-height: 1.4; color: #fff; }
+  .visor-miniaturas {
+    position: relative;
+    display: flex;
+    gap: .5rem;
+    padding: 1rem var(--margem) 1.25rem;
+    overflow-x: auto;
+    list-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--navy-linha) transparent;
+  }
+  .visor-miniaturas li { flex: none; }
+  /* centralizada quando cabe, rolando quando não cabe */
+  .visor-miniaturas li:first-child { margin-left: auto; }
+  .visor-miniaturas li:last-child { margin-right: auto; }
+  .visor-mini {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 4.5rem;
+    height: 3rem;
+    overflow: hidden;
+    background: #232634;
+    border: 2px solid transparent;
+    color: var(--cinza-2);
+    font-family: var(--sans);
+    font-size: .78rem;
+    opacity: .55;
+    cursor: pointer;
+    transition: opacity .2s, border-color .2s;
+  }
+  .visor-mini img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .visor-mini:hover { opacity: .85; }
+  .visor-mini[aria-current="true"] { opacity: 1; border-color: var(--laranja); color: #fff; }
+  @keyframes visor-surge { from { opacity: 0; } }
 
   /* ============ LOCALIZAÇÃO ============ */
   .endereco { font-family: var(--sans); }
@@ -584,6 +774,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .revelar { opacity: 1; transform: none; transition: none; }
+    .visor[open], .visor-imagem > * { animation: none; }
   }
 
   /* ============ TELAS MENORES ============ */
@@ -638,8 +829,17 @@
     .galeria { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .galeria .destaque { grid-row: auto; }
     .destaque .quadro { aspect-ratio: 3 / 2; }
-    /* com o destaque ocupando a linha toda, o último quadro fecha a grade sem sobrar buraco */
+    /* no celular o mosaico fica com cinco; sem JavaScript, o último quadro fecha a grade sem sobrar buraco */
+    .js .galeria > li:nth-child(n + 6) { display: none; }
     .galeria .destaque ~ li:last-child:nth-child(even) { grid-column: 1 / -1; }
+    .visor-topo { grid-template-columns: minmax(0, 1fr) auto; }
+    .visor-nome { display: none; }
+    .visor-palco { grid-template-columns: minmax(0, 1fr); padding: .75rem .75rem .5rem; }
+    .visor-seta { position: absolute; top: 50%; z-index: 1; width: 2.5rem; height: 2.5rem; margin-top: -1.25rem; background: rgba(20, 22, 29, .75); }
+    .visor-seta.anterior { left: .35rem; }
+    .visor-seta.proxima { right: .35rem; }
+    .visor-legenda { font-size: 1.02rem; }
+    .visor-mini { width: 3.6rem; height: 2.4rem; }
     .mapa { aspect-ratio: 1 / 1; }
     .dados > div { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
     .tempo li { grid-template-columns: minmax(0, 1fr); }
@@ -648,6 +848,13 @@
     .ficha dd { font-size: 1rem; }
     .rodape-grade { grid-template-columns: minmax(0, 1fr); }
     .rodape-base { flex-direction: column; }
+  }
+
+  @media (max-height: 30rem) {
+    .visor-topo { height: 3rem; }
+    .visor-palco { padding-top: .5rem; padding-bottom: .5rem; }
+    .visor-miniaturas { display: none; }
+    .visor-legenda { padding-bottom: .6rem; }
   }
 </style>
 </head>
@@ -993,24 +1200,21 @@
     <div class="revelar">
       <h2>O projeto em <em>imagens</em>.</h2>
       <p>Os renders e os desenhos técnicos entram aqui quando estiverem prontos.</p>
-      <h3 class="titulo-bloco">Imagens</h3>
       <ul class="galeria">
-          <li class="destaque"><div class="quadro"><span class="vazio"><strong>Vista do conjunto</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Fachada sul do prédio de 1960</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Marquise e praça</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Anexo e as aletas da fachada sul</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Auditório</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Sala de música</strong>Em produção</span></div></li>
+        <li class="destaque"><button type="button" class="quadro"><span class="vazio"><strong>Vista do conjunto</strong>Em produção</span></button></li>
+        <li><button type="button" class="quadro"><span class="vazio"><strong>Fachada sul do prédio de 1960</strong>Em produção</span></button></li>
+        <li><button type="button" class="quadro"><span class="vazio"><strong>Marquise e praça</strong>Em produção</span></button></li>
+        <li><button type="button" class="quadro"><span class="vazio"><strong>Anexo e as aletas da fachada sul</strong>Em produção</span></button></li>
+        <li><button type="button" class="quadro"><span class="vazio"><strong>Auditório</strong>Em produção</span></button></li>
+        <li><button type="button" class="quadro"><span class="vazio"><strong>Sala de música</strong>Em produção</span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Implantação</strong>Em produção</span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Planta do térreo</strong>Em produção</span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Cobertura</strong>Em produção</span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Cortes</strong>Em produção</span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Fachadas</strong>Em produção</span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Paisagismo</strong>Em produção</span></button></li>
       </ul>
-      <h3 class="titulo-bloco">Desenhos</h3>
-      <ul class="galeria desenhos">
-          <li><div class="quadro"><span class="vazio"><strong>Implantação</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Planta do térreo</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Cobertura</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Cortes</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Fachadas</strong>Em produção</span></div></li>
-          <li><div class="quadro"><span class="vazio"><strong>Paisagismo</strong>Em produção</span></div></li>
-      </ul>
+      <button type="button" class="ver-galeria" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.5h5v5h-5zM9.5 1.5h5v5h-5zM1.5 9.5h5v5h-5zM9.5 9.5h5v5h-5z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>Ver a galeria completa (<span class="n">12</span>)</span></button>
     </div>
   </div>
 </section>
@@ -1089,6 +1293,21 @@
   </div>
 </footer>
 
+<dialog class="visor" id="visor" aria-labelledby="visor-nome">
+  <div class="visor-topo">
+    <span class="visor-nome" id="visor-nome">Galeria · Entre o Legado e a Continuidade</span>
+    <span class="visor-contador">1 / 12</span>
+    <button type="button" class="visor-fechar" autofocus><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m1 1 10 10M11 1 1 11" stroke="currentColor" stroke-width="1.6"/></svg>Fechar</button>
+  </div>
+  <div class="visor-palco">
+    <button type="button" class="visor-seta anterior" aria-label="Imagem anterior"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10.5 2 4.5 8l6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+    <div class="visor-imagem"></div>
+    <button type="button" class="visor-seta proxima" aria-label="Próxima imagem"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m5.5 2 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+  </div>
+  <p class="visor-legenda" aria-live="polite"></p>
+  <ol class="visor-miniaturas" aria-label="Miniaturas"></ol>
+</dialog>
+
 <script>
   (function () {
     var barra = document.getElementById('barra');
@@ -1153,6 +1372,159 @@
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     Object.keys(porId).concat('topo').forEach(function (id) { atual.observe(document.getElementById(id)); });
+  })();
+
+  // galeria em tela cheia, como a do ArchDaily: mosaico na página, setas, contador e miniaturas
+  (function () {
+    var lista = document.querySelector('.galeria');
+    var visor = document.getElementById('visor');
+    if (!lista || !visor || typeof visor.showModal !== 'function') return;
+
+    var quadros = lista.querySelectorAll('.quadro');
+    var total = quadros.length;
+    var ver = document.querySelector('.ver-galeria');
+    var imagem = visor.querySelector('.visor-imagem');
+    var legenda = visor.querySelector('.visor-legenda');
+    var contador = visor.querySelector('.visor-contador');
+    var trilho = visor.querySelector('.visor-miniaturas');
+    var palco = visor.querySelector('.visor-palco');
+    var estreita = window.matchMedia('(max-width: 640px)');
+    var marca = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 14.5 16 7l9 7.5" fill="none" stroke="#EA5C1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 18.5 16 26l9-7.5" fill="none" stroke="#D6D7D7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    var minis = [];
+    var atual = 0;
+    var origem = null;
+
+    // o título vem do aviso "Em produção"; sem ele, do alt da imagem
+    function titulo(i) {
+      var s = quadros[i].querySelector('strong');
+      var img = quadros[i].querySelector('img');
+      return s ? s.textContent : (img ? img.alt : '');
+    }
+    function foto(i) {
+      var img = quadros[i].querySelector('img');
+      return img ? (img.getAttribute('data-grande') || img.src) : '';
+    }
+
+    // no mosaico ficam seis (cinco no celular), e o último mostra quantas faltam
+    var mais = document.createElement('span');
+    mais.className = 'mais';
+    mais.setAttribute('aria-hidden', 'true');
+    function marcarMais() {
+      var visiveis = estreita.matches ? 5 : 6;
+      quadros.forEach(function (q, i) {
+        q.classList.remove('tem-mais');
+        q.setAttribute('aria-label', 'Ampliar: ' + titulo(i));
+      });
+      if (total <= visiveis) {
+        if (mais.parentNode) mais.parentNode.removeChild(mais);
+        return;
+      }
+      mais.innerHTML = '+' + (total - visiveis) + '<small>Ver todas</small>';
+      quadros[visiveis - 1].appendChild(mais);
+      quadros[visiveis - 1].classList.add('tem-mais');
+      quadros[visiveis - 1].setAttribute('aria-label', 'Ver a galeria completa: mais ' + (total - visiveis) + ' imagens');
+    }
+
+    // as miniaturas só são montadas na primeira abertura, para não baixar todas as imagens com a página
+    function montarMiniaturas() {
+      quadros.forEach(function (q, i) {
+        var li = document.createElement('li');
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'visor-mini';
+        b.setAttribute('aria-label', (i + 1) + '. ' + titulo(i));
+        var img = q.querySelector('img');
+        if (img) {
+          var m = document.createElement('img');
+          m.src = img.src;
+          m.alt = '';
+          b.appendChild(m);
+        } else {
+          b.textContent = i + 1;
+        }
+        b.addEventListener('click', function () { mostrar(i, true); });
+        li.appendChild(b);
+        trilho.appendChild(li);
+        minis.push(b);
+      });
+    }
+
+    function mostrar(i, suave) {
+      atual = (i + total) % total;
+      var src = foto(atual);
+      imagem.textContent = '';
+      if (src) {
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = quadros[atual].querySelector('img').alt;
+        img.draggable = false;
+        imagem.appendChild(img);
+      } else {
+        imagem.innerHTML = '<div class="visor-vazio">' + marca + '<span>Em produção</span></div>';
+      }
+      legenda.textContent = titulo(atual);
+      contador.textContent = (atual + 1) + ' / ' + total;
+      minis.forEach(function (b, j) {
+        if (j === atual) b.setAttribute('aria-current', 'true');
+        else b.removeAttribute('aria-current');
+      });
+      // a miniatura atual fica no meio da faixa
+      var li = minis[atual].parentNode;
+      trilho.scrollTo({ left: li.offsetLeft - (trilho.clientWidth - li.offsetWidth) / 2, behavior: suave ? 'smooth' : 'auto' });
+      // as vizinhas já vão carregando
+      [atual + 1, atual - 1].forEach(function (j) {
+        var s = foto((j + total) % total);
+        if (s) new Image().src = s;
+      });
+    }
+
+    function abrir(i, botao) {
+      origem = botao;
+      if (!minis.length) montarMiniaturas();
+      document.documentElement.classList.add('visor-aberto');
+      visor.showModal();
+      mostrar(i);
+    }
+
+    quadros.forEach(function (q, i) {
+      q.setAttribute('aria-haspopup', 'dialog');
+      q.addEventListener('click', function () { abrir(i, q); });
+    });
+    if (ver) {
+      ver.querySelector('.n').textContent = total;
+      ver.hidden = false;
+      ver.addEventListener('click', function () { abrir(0, ver); });
+    }
+    marcarMais();
+    estreita.addEventListener('change', marcarMais);
+
+    visor.querySelector('.anterior').addEventListener('click', function () { mostrar(atual - 1, true); });
+    visor.querySelector('.proxima').addEventListener('click', function () { mostrar(atual + 1, true); });
+    visor.querySelector('.visor-fechar').addEventListener('click', function () { visor.close(); });
+    visor.addEventListener('close', function () {
+      document.documentElement.classList.remove('visor-aberto');
+      if (origem) origem.focus();
+    });
+    visor.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') mostrar(atual + 1, true);
+      else if (e.key === 'ArrowLeft') mostrar(atual - 1, true);
+      else return;
+      e.preventDefault();
+    });
+
+    // no celular, arrastar o dedo para o lado troca a imagem
+    var inicio = null;
+    palco.addEventListener('pointerdown', function (e) {
+      inicio = e.pointerType === 'mouse' ? null : { x: e.clientX, y: e.clientY };
+    });
+    palco.addEventListener('pointerup', function (e) {
+      if (!inicio) return;
+      var dx = e.clientX - inicio.x;
+      var dy = e.clientY - inicio.y;
+      inicio = null;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) mostrar(atual + (dx < 0 ? 1 : -1), true);
+    });
+    palco.addEventListener('pointercancel', function () { inicio = null; });
   })();
 </script>
 
