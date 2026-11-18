@@ -494,7 +494,8 @@
   .js .quadro:hover img { transform: scale(1.03); }
   .quadro:has(img) { border: 0; }
   .desenho .quadro { background: #fff; }
-  .desenho .quadro img { object-fit: contain; }
+  .desenho .quadro img { object-fit: contain; padding: .5rem; }
+  .titulo-quadro { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .vazio { font-family: var(--sans); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ardosia); }
   .vazio strong { display: block; margin-bottom: .3rem; font-family: var(--serif); font-size: 1rem; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--navy); }
   .destaque .vazio strong { font-size: 1.3rem; }
@@ -920,10 +921,11 @@
         <div><dt>Uso</dt><dd>Centro cultural: restauro e ampliação</dd></div>
         <div><dt>Endereço</dt><dd>R. Duque de Caxias, 145, Centro, Iracemápolis-SP</dd></div>
         <div><dt>Prédio original</dt><dd>1960, Grupo Escolar “Antônio Cândido de Camargo”</dd></div>
-        <div><dt>Terreno</dt><dd>5.516 m²</dd></div>
-        <div><dt>Área construída</dt><dd>1.130 m² no prédio de 1960 e cerca de 650 m² no anexo</dd></div>
-        <div><dt>Materiais do novo</dt><dd>Tijolo de cinza do bagaço de cana, concreto aparente e telha termoacústica</dd></div>
-        <div class="largo"><dt>Programa</dt><dd><span class="parte"><strong>Prédio de 1960:</strong> oficinas de moda e confecção, pintura em tela e em tecido, biscuit e artes manuais (crochê e tricô), sala multiuso, administração e Secretaria da Cultura.</span> <span class="parte"><strong>Anexo:</strong> salas de música (cordas, canto e sopro, percussão e banda), estúdio de dança, informática e auditório.</span></dd></div>
+        <div><dt>Terreno</dt><dd>5.516,08 m²</dd></div>
+        <div class="largo"><dt>Área construída</dt><dd>1.975,72 m²: 1.129,59 m² no prédio de 1960, 687,79 m² no anexo e 158,34 m² na marquise de concreto</dd></div>
+        <div><dt>Índices</dt><dd>Taxa de ocupação de 35,8%, coeficiente de aproveitamento de 0,36 e permeabilidade acima do mínimo de 8%</dd></div>
+        <div><dt>Materiais do novo</dt><dd>Tijolo de cinza do bagaço de cana, concreto aparente, aço e telha termoacústica</dd></div>
+        <div class="largo"><dt>Programa</dt><dd><span class="parte"><strong>Prédio de 1960:</strong> oficinas de moda e confecção, pintura em tela e em tecido, biscuit e artes manuais (crochê e tricô), sala multiuso, administração e Secretaria da Cultura.</span> <span class="parte"><strong>Anexo:</strong> salas de música (cordas, canto e sopro, percussão e banda), estúdio de dança, informática e auditório.</span> <span class="parte"><strong>Área externa:</strong> praça do ipê-rosa com palco externo e feira cultural, marquise de convivência e estacionamento.</span></dd></div>
       </dl>
     </div>
   </div>
@@ -1007,7 +1009,7 @@
     <div class="lateral"><span class="rotulo">04 · O lugar</span></div>
     <div class="revelar">
       <h2>No <em>centro</em> da vida da cidade.</h2>
-      <p>O CEAC ocupa o lote 145 da área central de Iracemápolis, entre as ruas Cesarino Borba, Duque de Caxias e Dom Pedro II, perto da Praça Matriz, de edifícios públicos, de escolas e do eixo comercial. São cerca de 4.000 m² de terreno e 1.130 m² construídos, no caminho do dia a dia da população.</p>
+      <p>O CEAC ocupa o lote 145 da área central de Iracemápolis, entre as ruas Cesarino Borba, Duque de Caxias e Dom Pedro II, perto da Praça Matriz, de edifícios públicos, de escolas e do eixo comercial. São 5.516 m² de terreno e 1.130 m² construídos no prédio de 1960, no caminho do dia a dia da população.</p>
       <p>Ao contrário de equipamentos culturais levados para a periferia, o CEAC faz parte de um conjunto cívico consolidado. A centralidade garante público o tempo todo e dispensa novas obras de infraestrutura: os recursos da intervenção ficam no próprio prédio e na sua área externa.</p>
     </div>
 
@@ -1132,10 +1134,10 @@
     <h3 class="lateral rotulo-bloco"><span class="rotulo">Os cinco gestos</span></h3>
     <div class="revelar">
       <ol class="gestos">
-        <li><span class="n">1</span><div><h4>Reativação bioclimática</h4><p>As calhas do vale e as janelas altas a norte são restauradas, e a ventilação natural por efeito chaminé volta a funcionar. O sistema original é reativado, não substituído.</p></div></li>
+        <li><span class="n">1</span><div><h4>Reativação bioclimática</h4><p>As calhas do vale e as janelas altas a norte são restauradas, e a ventilação natural por efeito chaminé volta a funcionar. Na entrada administrativa, uma marquise metálica nova recebe a água do vale nas chuvas fortes e a leva ao chão por dois pilares-condutores. O sistema original é reativado, não substituído.</p></div></li>
         <li><span class="n">2</span><div><h4>Marquise integradora</h4><p>Uma cobertura plana de concreto aparente liga o prédio antigo ao anexo e cria a convivência coberta que o conjunto não tinha.</p></div></li>
-        <li><span class="n">3</span><div><h4>Anexo em cumeeira invertida</h4><p>A cobertura em Λ dá pé-direito alto às salas de música e dança, leva a água para os beirais e traz luz difusa do sul. Aletas de concreto aparente dão ritmo e sombra à fachada voltada para a marquise.</p></div></li>
-        <li><span class="n">4</span><div><h4>Caixas acústicas</h4><p>As salas de música recebem paredes duplas de drywall com câmara de ar e lã de rocha, dentro da envoltória do anexo.</p></div></li>
+        <li><span class="n">3</span><div><h4>Anexo em cumeeira invertida</h4><p>A cobertura em Λ dá pé-direito alto às salas de música e dança, leva a água para os beirais e traz luz difusa do sul. Aletas de concreto aparente dão ritmo e sombra à fachada voltada para a marquise; a norte, cada sala ganha uma janela com moldura de concreto, prateleira de luz e lâminas que sombreiam o vidro.</p></div></li>
+        <li><span class="n">4</span><div><h4>Acústica no anexo</h4><p>As salas de música recebem tratamento acústico interno, com painéis absorventes e difusores, e são separadas por divisórias de drywall duplo com lã de rocha. A parede de tijolo de CBC é a primeira barreira.</p></div></li>
         <li><span class="n">5</span><div><h4>Distribuição por aptidão</h4><p>Cada uso vai para o volume que já tem as condições que ele pede: moda, artes manuais, artes visuais e administração no prédio de 1960; música, dança, informática e o auditório no anexo.</p></div></li>
       </ol>
     </div>
@@ -1146,7 +1148,7 @@
         <article class="setor antigo">
           <span class="campo">Prédio de 1960</span>
           <h4>Oficinas e administração</h4>
-          <p>Oito salas de oficina: três de moda e confecção, três de artes visuais (pintura em tela, pintura em tecido e modelagem em biscuit), artes manuais e uma sala multiuso. Também a Secretaria Municipal da Cultura, a direção do CEAC, a sala de reunião e sanitários refeitos, com sanitário acessível.</p>
+          <p>Oito salas de oficina: três de moda e confecção, três de artes visuais (pintura em tela, pintura em tecido e modelagem em biscuit), artes manuais e uma sala multiuso. Também a Secretaria Municipal da Cultura, a direção e a coordenação pedagógica do CEAC, a sala dos professores, a sala de reunião e sanitários refeitos, com sanitário acessível e sanitário família. Nenhuma parede original é demolida: o prédio recebe só uma parede nova, uma janela no lugar do cobogó da administração e uma porta remanejada.</p>
         </article>
         <article class="setor anexo">
           <span class="campo">Anexo</span>
@@ -1160,8 +1162,8 @@
         </article>
         <article class="setor praca">
           <span class="campo">Área externa</span>
-          <h4>Praça</h4>
-          <p>Praça contemporânea em torno do ipê-rosa existente, aberta à cidade, com as árvores de grande porte preservadas.</p>
+          <h4>Praça do ipê</h4>
+          <p>Praça circular em torno do ipê-rosa existente, o protagonista. Junto ao anexo, um palco externo em nível, de concreto aparente, com a plateia no gramado; a oeste, barracas desmontáveis para uma feira cultural; e ainda playground, mesas de jogos e bicicletário. Doze espécies nativas garantem floração em todos os meses.</p>
         </article>
       </div>
     </div>
@@ -1189,7 +1191,7 @@
       <blockquote class="citacao">
         <p>É a continuidade pelo contraste: o legado reconhecido exatamente por aquilo que o novo não imita.</p>
       </blockquote>
-      <p class="aviso">Projeto em desenvolvimento. Plantas, cortes e imagens entram aqui depois da banca final.</p>
+      <p class="aviso">Plantas, cortes, fachadas e imagens do projeto estão na <a href="#galeria">galeria</a>.</p>
     </div>
   </div>
 </section>
@@ -1199,22 +1201,29 @@
     <div class="lateral"><span class="rotulo">06 · Galeria</span></div>
     <div class="revelar">
       <h2>O projeto em <em>imagens</em>.</h2>
-      <p>Os renders e os desenhos técnicos entram aqui quando estiverem prontos.</p>
+      <p>Renders do modelo e desenhos das pranchas técnicas. Clique em uma imagem para ampliar.</p>
       <ul class="galeria">
-        <li class="destaque"><button type="button" class="quadro"><span class="vazio"><strong>Vista do conjunto</strong>Em produção</span></button></li>
-        <li><button type="button" class="quadro"><span class="vazio"><strong>Fachada sul do prédio de 1960</strong>Em produção</span></button></li>
-        <li><button type="button" class="quadro"><span class="vazio"><strong>Marquise e praça</strong>Em produção</span></button></li>
-        <li><button type="button" class="quadro"><span class="vazio"><strong>Anexo e as aletas da fachada sul</strong>Em produção</span></button></li>
-        <li><button type="button" class="quadro"><span class="vazio"><strong>Auditório</strong>Em produção</span></button></li>
-        <li><button type="button" class="quadro"><span class="vazio"><strong>Sala de música</strong>Em produção</span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Implantação</strong>Em produção</span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Planta do térreo</strong>Em produção</span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Cobertura</strong>Em produção</span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Cortes</strong>Em produção</span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Fachadas</strong>Em produção</span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><span class="vazio"><strong>Paisagismo</strong>Em produção</span></button></li>
+        <li class="destaque"><button type="button" class="quadro"><img src="galeria/render-08-mini.jpg" data-grande="galeria/render-08.jpg" alt="Ao pôr do sol: o ipê-rosa, o caminho e a fachada do prédio de 1960" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>Ao pôr do sol: o ipê-rosa, o caminho e a fachada do prédio de 1960</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-12-mini.jpg" data-grande="galeria/render-12.jpg" alt="O ipê-rosa existente, protagonista da praça" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>O ipê-rosa existente, protagonista da praça</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-02-mini.jpg" data-grande="galeria/render-02.jpg" alt="Chegada pelo estacionamento" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>Chegada pelo estacionamento</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-04-mini.jpg" data-grande="galeria/render-04.jpg" alt="Os dois telhados: o V de 1960 e a cumeeira do anexo" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>Os dois telhados: o V de 1960 e a cumeeira do anexo</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-09-mini.jpg" data-grande="galeria/render-09.jpg" alt="O anexo e o prédio de 1960 vistos da praça" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>O anexo e o prédio de 1960 vistos da praça</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-10-mini.jpg" data-grande="galeria/render-10.jpg" alt="O prédio de 1960 visto da calçada" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>O prédio de 1960 visto da calçada</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/perspectiva-01-mini.jpg" data-grande="galeria/perspectiva-01.jpg" alt="Volumetria: perspectiva do conjunto" width="1100" height="287" loading="lazy"><span class="titulo-quadro"><strong>Volumetria: perspectiva do conjunto</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/perspectiva-02-mini.jpg" data-grande="galeria/perspectiva-02.jpg" alt="Volumetria: o prédio de 1960 e o anexo" width="1100" height="372" loading="lazy"><span class="titulo-quadro"><strong>Volumetria: o prédio de 1960 e o anexo</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/implantacao-mini.jpg" data-grande="galeria/implantacao.jpg" alt="Implantação" width="866" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Implantação</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/planta-tecnica-mini.jpg" data-grande="galeria/planta-tecnica.jpg" alt="Planta baixa do térreo" width="845" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Planta baixa do térreo</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/layout-mini.jpg" data-grande="galeria/layout.jpg" alt="Layout do térreo" width="851" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Layout do térreo</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/cobertura-mini.jpg" data-grande="galeria/cobertura.jpg" alt="Planta de cobertura" width="837" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Planta de cobertura</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/corte-aa-mini.jpg" data-grande="galeria/corte-aa.jpg" alt="Corte AA" width="1100" height="246" loading="lazy"><span class="titulo-quadro"><strong>Corte AA</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/corte-bb-mini.jpg" data-grande="galeria/corte-bb.jpg" alt="Corte BB" width="1100" height="169" loading="lazy"><span class="titulo-quadro"><strong>Corte BB</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/corte-cc-mini.jpg" data-grande="galeria/corte-cc.jpg" alt="Corte CC" width="1100" height="186" loading="lazy"><span class="titulo-quadro"><strong>Corte CC</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/fachadas-norte-sul-mini.jpg" data-grande="galeria/fachadas-norte-sul.jpg" alt="Fachadas norte e sul" width="1100" height="339" loading="lazy"><span class="titulo-quadro"><strong>Fachadas norte e sul</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/fachadas-leste-oeste-mini.jpg" data-grande="galeria/fachadas-leste-oeste.jpg" alt="Fachadas leste e oeste" width="1100" height="518" loading="lazy"><span class="titulo-quadro"><strong>Fachadas leste e oeste</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/paisagismo-mini.jpg" data-grande="galeria/paisagismo.jpg" alt="Paisagismo: a praça do ipê" width="859" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Paisagismo: a praça do ipê</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/quadro-especies-mini.jpg" data-grande="galeria/quadro-especies.jpg" alt="Quadro de espécies da praça" width="1100" height="466" loading="lazy"><span class="titulo-quadro"><strong>Quadro de espécies da praça</strong></span></button></li>
       </ul>
-      <button type="button" class="ver-galeria" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.5h5v5h-5zM9.5 1.5h5v5h-5zM1.5 9.5h5v5h-5zM9.5 9.5h5v5h-5z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>Ver a galeria completa (<span class="n">12</span>)</span></button>
+      <button type="button" class="ver-galeria" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.5h5v5h-5zM9.5 1.5h5v5h-5zM1.5 9.5h5v5h-5zM9.5 9.5h5v5h-5z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>Ver a galeria completa (<span class="n">19</span>)</span></button>
     </div>
   </div>
 </section>
