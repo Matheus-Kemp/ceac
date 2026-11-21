@@ -288,6 +288,8 @@
 
   /* ============ FICHA TÉCNICA ============ */
   .secao.ficha-tecnica { padding-top: clamp(2.5rem, 5vw, 3.5rem); padding-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+  .logo-ceac { display: block; width: min(100%, 26rem); margin: 0 0 1.25rem; }
+  .logo-ceac img { display: block; width: 100%; height: auto; }
   .dados { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; border-bottom: 1px solid var(--linha); }
   .dados > div { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1rem; padding: .85rem 0; border-top: 1px solid var(--linha); }
   .dados > .largo { grid-column: 1 / -1; }
@@ -927,6 +929,10 @@
   <div class="grade">
     <div class="lateral"><span class="rotulo" id="ficha-titulo">Ficha técnica</span></div>
     <div class="revelar">
+      <picture class="logo-ceac">
+        <source srcset="marca/logo-ceac.webp" type="image/webp">
+        <img src="marca/logo-ceac.png" alt="Logo do CEAC, Centro de Educação, Arte e Cultura: as fachadas do prédio de 1960 e do anexo sobre a palavra CEAC, com o A desenhado como a cumeeira invertida" width="1000" height="482">
+      </picture>
       <dl class="dados">
         <div><dt>Uso</dt><dd>Centro cultural: restauro e ampliação</dd></div>
         <div><dt>Endereço</dt><dd>R. Duque de Caxias, 145, Centro, Iracemápolis-SP</dd></div>
