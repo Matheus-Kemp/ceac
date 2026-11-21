@@ -367,10 +367,6 @@
   }
   .preserva strong { color: var(--texto); font-weight: 700; }
 
-  .condicoes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; max-width: 56rem; }
-  .condicao { padding-top: 1rem; border-top: 4px solid var(--ardosia); }
-  .condicao h4 { margin: .3rem 0 .4rem; font-size: 1.15rem; font-weight: 700; color: var(--navy); }
-  .secao .condicao p { margin: 0; font-size: .98rem; }
 
   /* ============ HISTÓRIA ============ */
   .tempo .nome-uso { color: var(--texto); font-weight: 700; }
@@ -839,7 +835,7 @@
 
   @media (max-width: 640px) {
     body { font-size: 1.03rem; }
-    .setores, .pessoas, .preserva, .camadas, .legenda, .condicoes, .fotos, .dados { grid-template-columns: minmax(0, 1fr); }
+    .setores, .pessoas, .preserva, .camadas, .legenda, .fotos, .dados { grid-template-columns: minmax(0, 1fr); }
     .galeria { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .pranchas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem .75rem; }
     .galeria .destaque { grid-row: auto; }
@@ -1021,28 +1017,6 @@
       <h2>No <em>centro</em> da vida da cidade.</h2>
       <p>O CEAC fica na área central de Iracemápolis, num lote com três frentes, para as ruas Duque de Caxias (onde tem o número 145), Cesarino Borba e Dom Pedro II, perto da Praça Matriz, de edifícios públicos, de escolas e do eixo comercial, no caminho do dia a dia da população. O lote tem 4.004&nbsp;m², com 1.130&nbsp;m² construídos no prédio de 1960; o projeto agrega a ele duas parcelas vizinhas e forma uma gleba de 5.516&nbsp;m².</p>
       <p>Ao contrário de equipamentos culturais levados para a periferia, o CEAC faz parte de um conjunto cívico consolidado. A centralidade garante público o tempo todo e dispensa novas obras de infraestrutura: os recursos da intervenção ficam no próprio prédio e na sua área externa.</p>
-    </div>
-
-    <h3 class="lateral rotulo-bloco"><span class="rotulo">Clima</span></h3>
-    <div class="revelar">
-      <div class="condicoes">
-        <div class="condicao">
-          <span class="campo">Chuva</span>
-          <h4>Verões chuvosos</h4>
-          <p>Clima tropical de altitude, com as chuvas concentradas de outubro a março. A cobertura precisa de uma drenagem que dê conta das chuvas fortes.</p>
-        </div>
-        <div class="condicao">
-          <span class="campo">Calor</span>
-          <h4>Conforto passivo</h4>
-          <p>Nos meses quentes, a resposta vem do próprio edifício: ventilação cruzada e o efeito chaminé do telhado borboleta.</p>
-        </div>
-        <div class="condicao">
-          <span class="campo">Vento</span>
-          <h4>Do sul-sudeste</h4>
-          <p>O vento dominante entra pelas janelas baixas das salas voltadas ao sul e sai pelas janelas altas a norte, renovando o ar continuamente.</p>
-        </div>
-      </div>
-      <p class="fonte">Fontes: Meteoblue (2026); Alvares et al. (2013).</p>
     </div>
 
     <div class="lateral"><span class="rotulo">Diagnóstico</span></div>
