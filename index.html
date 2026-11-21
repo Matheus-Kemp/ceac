@@ -537,6 +537,18 @@
     transition: background-color .2s, color .2s;
   }
   .ver-galeria[hidden] { display: none; }
+  /* subtítulos da galeria: Imagens e Pranchas */
+  .sub-galeria { margin: 2.75rem 0 0; font-family: var(--sans); font-size: .75rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--ardosia); }
+  .revelar > p + .sub-galeria { margin-top: 2rem; }
+  .sub-galeria + .galeria, .sub-galeria + .pranchas { margin-top: .9rem; }
+  /* pranchas: uma capa por folha; os outros desenhos da folha só aparecem na tela cheia */
+  .pranchas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.25rem .75rem; max-width: 56rem; list-style: none; }
+  .js .pranchas > li:not(.folha-capa) { display: none; }
+  .pranchas .quadro { height: auto; min-height: 0; aspect-ratio: 1; padding: 0; }
+  .pranchas .quadro:has(img) { border: 1px solid var(--linha); }
+  .js .pranchas .quadro:hover { border-color: var(--laranja); }
+  .pranchas .folha { margin: .55rem 0 0; font-family: var(--sans); font-size: .82rem; line-height: 1.35; color: var(--navy); }
+  .pranchas .folha span { display: block; margin-bottom: .15rem; font-size: .66rem; letter-spacing: .16em; text-transform: uppercase; color: var(--laranja-texto); }
   .ver-galeria svg { width: .95rem; height: .95rem; flex: none; }
   .ver-galeria:hover { background: var(--navy); color: #fff; }
 
@@ -804,6 +816,7 @@
   }
 
   @media (max-width: 960px) {
+    .pranchas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grade { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
     .grade > .lateral { padding-top: 0; }
     .grade > .lateral ~ .lateral { margin-top: 2.75rem; }
@@ -828,6 +841,7 @@
     body { font-size: 1.03rem; }
     .setores, .pessoas, .preserva, .camadas, .legenda, .condicoes, .fotos, .dados { grid-template-columns: minmax(0, 1fr); }
     .galeria { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pranchas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem .75rem; }
     .galeria .destaque { grid-row: auto; }
     .destaque .quadro { aspect-ratio: 3 / 2; }
     /* no celular o mosaico fica com cinco; sem JavaScript, o último quadro fecha a grade sem sobrar buraco */
@@ -925,7 +939,7 @@
         <div class="largo"><dt>Área construída</dt><dd>1.975,72 m²: 1.129,59 m² no prédio de 1960, 687,79 m² no anexo e 158,34 m² na marquise de concreto</dd></div>
         <div><dt>Índices</dt><dd>Taxa de ocupação de 35,8%, coeficiente de aproveitamento de 0,36 e permeabilidade acima do mínimo de 8%</dd></div>
         <div><dt>Materiais do novo</dt><dd>Tijolo de cinza do bagaço de cana, concreto aparente, aço e telha termoacústica</dd></div>
-        <div class="largo"><dt>Programa</dt><dd><span class="parte"><strong>Prédio de 1960:</strong> oficinas de moda e confecção, pintura em tela e em tecido, biscuit e artes manuais (crochê e tricô), sala multiuso, administração e Secretaria da Cultura.</span> <span class="parte"><strong>Anexo:</strong> salas de música (cordas, canto e sopro, percussão e banda), estúdio de dança, informática e auditório.</span> <span class="parte"><strong>Área externa:</strong> praça do ipê-rosa com palco externo e feira cultural, marquise de convivência e estacionamento.</span></dd></div>
+        <div class="largo"><dt>Programa</dt><dd><span class="parte"><strong>Prédio de 1960:</strong> oficinas de moda e confecção, pintura em tela e em tecido, biscuit e artes manuais (crochê e tricô), sala multiuso, administração e Secretaria da Cultura.</span> <span class="parte"><strong>Anexo:</strong> salas de música (cordas, canto e sopro, percussão e banda), estúdio de dança, informática, anfiteatro e foyer de exposições.</span> <span class="parte"><strong>Área externa:</strong> praça do ipê-rosa com palco externo e feira cultural, marquise de convivência e estacionamento.</span></dd></div>
       </dl>
     </div>
   </div>
@@ -953,7 +967,7 @@
       <ol class="objetivos">
         <li><span class="n">01</span><span class="t">Devolver o CEAC à cidade como centro cultural contemporâneo, funcional e integrado à vida comunitária.</span></li>
         <li><span class="n">02</span><span class="t">Preservar o que o prédio de 1960 tem de valor: a fachada de tijolo aparente com pilares pintados, o piso de caquinhos, os painéis pintados e a ventilação natural.</span></li>
-        <li><span class="n">03</span><span class="t">Criar os espaços que os cursos pedem e o prédio nunca teve: salas de música com isolamento acústico, estúdio de dança, auditório e convivência coberta.</span></li>
+        <li><span class="n">03</span><span class="t">Criar os espaços que os cursos pedem e o prédio nunca teve: salas de música com isolamento acústico, estúdio de dança, anfiteatro e convivência coberta.</span></li>
         <li><span class="n">04</span><span class="t">Construir o novo com material regional e sustentável, o tijolo de cinza do bagaço de cana, ligando a obra à história econômica de Iracemápolis.</span></li>
       </ol>
     </div>
@@ -1130,11 +1144,11 @@
     <h3 class="lateral rotulo-bloco"><span class="rotulo">Os cinco gestos</span></h3>
     <div class="revelar">
       <ol class="gestos">
-        <li><span class="n">1</span><div><h4>Reativação bioclimática</h4><p>As calhas do vale e as janelas altas a norte são restauradas, e a ventilação natural por efeito chaminé volta a funcionar. Na entrada administrativa, uma marquise metálica nova recebe a água do vale nas chuvas fortes e a leva ao chão por dois pilares-condutores. O sistema original é reativado, não substituído.</p></div></li>
+        <li><span class="n">1</span><div><h4>Reativação bioclimática</h4><p>As calhas do vale e as janelas altas a norte são restauradas, e a ventilação natural por efeito chaminé volta a funcionar. Na fachada oeste, a marquise metálica da entrada administrativa recebe a água da calha do vale e a leva ao piso pelos pilares. O sistema original é reativado, não substituído.</p></div></li>
         <li><span class="n">2</span><div><h4>Marquise integradora</h4><p>Uma cobertura plana de concreto aparente liga o prédio antigo ao anexo e cria a convivência coberta que o conjunto não tinha.</p></div></li>
-        <li><span class="n">3</span><div><h4>Anexo em cumeeira invertida</h4><p>A cobertura em Λ dá pé-direito alto às salas de música e dança, leva a água para os beirais e traz luz difusa do sul. Aletas de concreto aparente dão ritmo e sombra à fachada voltada para a marquise; a norte, cada sala ganha uma janela com moldura de concreto, prateleira de luz e lâminas que sombreiam o vidro.</p></div></li>
-        <li><span class="n">4</span><div><h4>Acústica no anexo</h4><p>As salas de música recebem tratamento acústico interno, com painéis absorventes e difusores, e são separadas por divisórias de drywall duplo com lã de rocha. A parede de tijolo de CBC é a primeira barreira.</p></div></li>
-        <li><span class="n">5</span><div><h4>Distribuição por aptidão</h4><p>Cada uso vai para o volume que já tem as condições que ele pede: moda, artes manuais, artes visuais e administração no prédio de 1960; música, dança, informática e o auditório no anexo.</p></div></li>
+        <li><span class="n">3</span><div><h4>Anexo com cumeeira e zenital sul</h4><p>A cobertura em Λ dá pé-direito alto às salas de música, ao estúdio de dança e ao anfiteatro e leva a água para calhas externas nos beirais; o zenital voltado ao sul traz luz difusa à circulação central. Aletas de concreto aparente dão ritmo e sombra à fachada voltada para a marquise; a norte, cada sala ganha uma janela com moldura de concreto, prateleira de luz e lâminas que sombreiam o vidro.</p></div></li>
+        <li><span class="n">4</span><div><h4>Acústica no anexo</h4><p>As salas de música recebem tratamento acústico interno, com painéis absorventes e difusores, e são separadas por divisórias de drywall duplo com lã de rocha. A parede de tijolo de CBC é a primeira barreira, as divisórias isolam uma sala da outra e o tratamento interno corrige o som dentro de cada sala.</p></div></li>
+        <li><span class="n">5</span><div><h4>Distribuição por aptidão</h4><p>Cada uso vai para o volume que já tem as condições que ele pede: moda, confecção, artes visuais e administração, sem demanda acústica, no prédio de 1960; música, dança, informática e o anfiteatro no anexo, com as exposições no foyer.</p></div></li>
       </ol>
     </div>
 
@@ -1144,22 +1158,22 @@
         <article class="setor antigo">
           <span class="campo">Prédio de 1960</span>
           <h4>Oficinas e administração</h4>
-          <p>Oito salas de oficina: três de moda e confecção, três de artes visuais (pintura em tela, pintura em tecido e modelagem em biscuit), artes manuais e uma sala multiuso. Também a Secretaria Municipal da Cultura, a direção e a coordenação pedagógica do CEAC, a sala dos professores, a sala de reunião e sanitários refeitos, com sanitário acessível e sanitário família. Nenhuma parede original é demolida: o prédio recebe só uma parede nova, uma janela no lugar do cobogó da administração e uma porta remanejada.</p>
+          <p>Sete oficinas nas salas da face sul: três de moda e confecção, três de artes visuais (pintura em tela, pintura em tecido e modelagem em biscuit) e artes manuais; na face norte, a sala multiuso e a sala dos professores. A Secretaria Municipal da Cultura e a direção do CEAC ficam dos dois lados da recepção, onde se fazem as matrículas, e dividem a copa e a sala de reunião. Os sanitários são refeitos, com um sanitário família acessível; fora deles, nenhuma parede é demolida.</p>
         </article>
         <article class="setor anexo">
           <span class="campo">Anexo</span>
-          <h4>Música, dança e auditório</h4>
-          <p>Quatro salas de música (cordas, canto e sopro, percussão e banda), estúdio de dança, laboratório de informática e um auditório voltado para a marquise.</p>
+          <h4>Música, dança e anfiteatro</h4>
+          <p>Na faixa norte, quatro salas de música (cordas, canto e sopro, percussão e banda) e o estúdio de dança; na faixa sul, voltados à marquise, o átrio, o foyer, o anfiteatro e o laboratório de informática. O foyer recebe a exposição permanente do acervo Maria Dezonne Pacheco Fernandes e mostras dos artistas do CEAC.</p>
         </article>
         <article class="setor marquise">
           <span class="campo">Marquise</span>
           <h4>Convivência coberta</h4>
-          <p>Cobertura plana de concreto aparente entre os dois prédios: sombra, encontro e passagem.</p>
+          <p>Laje plana de concreto aparente, com as laterais abertas, sobre a esplanada que atravessa o terreno entre os dois prédios: sombra, encontro e passagem.</p>
         </article>
         <article class="setor praca">
           <span class="campo">Área externa</span>
           <h4>Praça do ipê</h4>
-          <p>Praça circular em torno do ipê-rosa existente, o protagonista. Junto ao anexo, um palco externo em nível, de concreto aparente, com a plateia no gramado; a oeste, barracas desmontáveis para uma feira cultural; e ainda playground, mesas de jogos e bicicletário. Doze espécies nativas garantem floração em todos os meses.</p>
+          <p>Praça circular em torno do ipê-rosa existente, o protagonista, com piso drenante, playground, mesas de jogos e bicicletário. Junto ao anexo, um palco externo em nível, de concreto aparente, recebe apresentações ao ar livre, e tendas desmontáveis abrigam uma feira. Doze espécies nativas garantem floração o ano todo.</p>
         </article>
       </div>
     </div>
@@ -1187,7 +1201,7 @@
       <blockquote class="citacao">
         <p>É a continuidade pelo contraste: o legado reconhecido exatamente por aquilo que o novo não imita.</p>
       </blockquote>
-      <p class="aviso">Plantas, cortes, fachadas e imagens do projeto estão na <a href="#galeria">galeria</a>.</p>
+      <p class="aviso">As imagens e as dez pranchas do projeto estão na <a href="#galeria">galeria</a>.</p>
     </div>
   </div>
 </section>
@@ -1197,31 +1211,44 @@
     <div class="lateral"><span class="rotulo">06 · Galeria</span></div>
     <div class="revelar">
       <h2>O projeto em <em>imagens</em>.</h2>
-      <p>Renders do modelo e desenhos das pranchas técnicas. Clique em uma imagem para ampliar.</p>
-      <ul class="galeria">
-        <li class="destaque"><button type="button" class="quadro"><img src="galeria/render-08-mini.jpg" data-grande="galeria/render-08.jpg" alt="Ao pôr do sol: o ipê-rosa, o caminho e a fachada do prédio de 1960" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>Ao pôr do sol: o ipê-rosa, o caminho e a fachada do prédio de 1960</strong></span></button></li>
-        <li><button type="button" class="quadro"><img src="galeria/render-12-mini.jpg" data-grande="galeria/render-12.jpg" alt="O ipê-rosa existente, protagonista da praça" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>O ipê-rosa existente, protagonista da praça</strong></span></button></li>
-        <li><button type="button" class="quadro"><img src="galeria/render-02-mini.jpg" data-grande="galeria/render-02.jpg" alt="Chegada pelo estacionamento" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>Chegada pelo estacionamento</strong></span></button></li>
-        <li><button type="button" class="quadro"><img src="galeria/render-04-mini.jpg" data-grande="galeria/render-04.jpg" alt="Os dois telhados: o V de 1960 e a cumeeira do anexo" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>Os dois telhados: o V de 1960 e a cumeeira do anexo</strong></span></button></li>
-        <li><button type="button" class="quadro"><img src="galeria/render-09-mini.jpg" data-grande="galeria/render-09.jpg" alt="O anexo e o prédio de 1960 vistos da praça" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>O anexo e o prédio de 1960 vistos da praça</strong></span></button></li>
-        <li><button type="button" class="quadro"><img src="galeria/render-10-mini.jpg" data-grande="galeria/render-10.jpg" alt="O prédio de 1960 visto da calçada" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>O prédio de 1960 visto da calçada</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/perspectiva-01-mini.jpg" data-grande="galeria/perspectiva-01.jpg" alt="Volumetria: perspectiva do conjunto" width="1100" height="287" loading="lazy"><span class="titulo-quadro"><strong>Volumetria: perspectiva do conjunto</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/perspectiva-02-mini.jpg" data-grande="galeria/perspectiva-02.jpg" alt="Volumetria: o prédio de 1960 e o anexo" width="1100" height="372" loading="lazy"><span class="titulo-quadro"><strong>Volumetria: o prédio de 1960 e o anexo</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/implantacao-mini.jpg" data-grande="galeria/implantacao.jpg" alt="Implantação" width="866" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Implantação</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/planta-tecnica-mini.jpg" data-grande="galeria/planta-tecnica.jpg" alt="Planta baixa do térreo" width="845" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Planta baixa do térreo</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/layout-mini.jpg" data-grande="galeria/layout.jpg" alt="Layout do térreo" width="851" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Layout do térreo</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/cobertura-mini.jpg" data-grande="galeria/cobertura.jpg" alt="Planta de cobertura" width="837" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Planta de cobertura</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/estrutura-mini.jpg" data-grande="galeria/estrutura.jpg" alt="Planta de estrutura" width="899" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Planta de estrutura</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/corte-aa-mini.jpg" data-grande="galeria/corte-aa.jpg" alt="Corte AA" width="1100" height="246" loading="lazy"><span class="titulo-quadro"><strong>Corte AA</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/corte-bb-mini.jpg" data-grande="galeria/corte-bb.jpg" alt="Corte BB" width="1100" height="169" loading="lazy"><span class="titulo-quadro"><strong>Corte BB</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/corte-cc-mini.jpg" data-grande="galeria/corte-cc.jpg" alt="Corte CC" width="1100" height="186" loading="lazy"><span class="titulo-quadro"><strong>Corte CC</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/fachadas-norte-sul-mini.jpg" data-grande="galeria/fachadas-norte-sul.jpg" alt="Fachadas norte e sul" width="1100" height="339" loading="lazy"><span class="titulo-quadro"><strong>Fachadas norte e sul</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/fachadas-leste-oeste-mini.jpg" data-grande="galeria/fachadas-leste-oeste.jpg" alt="Fachadas leste e oeste" width="1100" height="518" loading="lazy"><span class="titulo-quadro"><strong>Fachadas leste e oeste</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/paisagismo-mini.jpg" data-grande="galeria/paisagismo.jpg" alt="Paisagismo: a praça do ipê" width="859" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Paisagismo: a praça do ipê</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/quadro-especies-mini.jpg" data-grande="galeria/quadro-especies.jpg" alt="Quadro de espécies da praça" width="1100" height="466" loading="lazy"><span class="titulo-quadro"><strong>Quadro de espécies da praça</strong></span></button></li>
-        <li class="desenho"><button type="button" class="quadro"><img src="galeria/demolir-construir-mini.jpg" data-grande="galeria/demolir-construir.jpg" alt="Demolir e construir: o prédio de 1960" width="407" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Demolir e construir: o prédio de 1960</strong></span></button></li>
+      <p>Vistas feitas no Lumion a partir do modelo do Revit e as dez pranchas técnicas do projeto. Clique para ampliar.</p>
+      <h3 class="sub-galeria">Imagens</h3>
+      <ul class="galeria" data-nome="Imagens">
+        <li class="destaque"><button type="button" class="quadro"><img src="galeria/render-praca-mini.jpg" data-grande="galeria/render-praca.jpg" alt="A praça, com o ipê-rosa no centro, a feira, o playground e o anexo ao fundo" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>A praça, com o ipê-rosa no centro, a feira, o playground e o anexo ao fundo</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-fachada-sul-mini.jpg" data-grande="galeria/render-fachada-sul.jpg" alt="A fachada sul do edifício de 1960, vista da Rua Cesarino Borba" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>A fachada sul do edifício de 1960, vista da Rua Cesarino Borba</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-esplanada-mini.jpg" data-grande="galeria/render-esplanada.jpg" alt="A esplanada sob a marquise de concreto, entre o anexo e o edifício de 1960" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>A esplanada sob a marquise de concreto, entre o anexo e o edifício de 1960</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-foyer-mini.jpg" data-grande="galeria/render-foyer.jpg" alt="O foyer do anexo, com a exposição e o cobogó de tijolo de CBC" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>O foyer do anexo, com a exposição e o cobogó de tijolo de CBC</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-fachada-leste-mini.jpg" data-grande="galeria/render-fachada-leste.jpg" alt="A fachada leste, na Rua Dom Pedro II: o telhado borboleta de 1960 e a cumeeira do anexo" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>A fachada leste, na Rua Dom Pedro II: o telhado borboleta de 1960 e a cumeeira do anexo</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-estacionamento-mini.jpg" data-grande="galeria/render-estacionamento.jpg" alt="O estacionamento e a entrada administrativa, com a marquise metálica" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>O estacionamento e a entrada administrativa, com a marquise metálica</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-marquise-mini.jpg" data-grande="galeria/render-marquise.jpg" alt="A marquise de concreto sobre a esplanada" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>A marquise de concreto sobre a esplanada</strong></span></button></li>
+        <li><button type="button" class="quadro"><img src="galeria/render-sob-a-marquise-mini.jpg" data-grande="galeria/render-sob-a-marquise.jpg" alt="O foyer envidraçado do anexo, à esquerda, e o edifício de 1960" width="1100" height="619" loading="lazy"><span class="titulo-quadro"><strong>O foyer envidraçado do anexo, à esquerda, e o edifício de 1960</strong></span></button></li>
       </ul>
-      <button type="button" class="ver-galeria" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.5h5v5h-5zM9.5 1.5h5v5h-5zM1.5 9.5h5v5h-5zM9.5 9.5h5v5h-5z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>Ver a galeria completa (<span class="n">21</span>)</span></button>
+      <button type="button" class="ver-galeria" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 1.5h5v5h-5zM9.5 1.5h5v5h-5zM1.5 9.5h5v5h-5zM9.5 9.5h5v5h-5z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg><span>Ver todas as imagens (<span class="n">8</span>)</span></button>
+      <h3 class="sub-galeria">Pranchas</h3>
+      <ul class="pranchas" data-nome="Pranchas">
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/implantacao-mini.jpg" data-grande="galeria/implantacao.jpg" alt="Folha 01 · Implantação" width="866" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Folha 01 · Implantação</strong></span></button><p class="folha"><span>Folha 01</span>Implantação e localização</p></li>
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/planta-tecnica-mini.jpg" data-grande="galeria/planta-tecnica.jpg" alt="Folha 02 · Planta baixa do térreo" width="845" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Folha 02 · Planta baixa do térreo</strong></span></button><p class="folha"><span>Folha 02</span>Planta técnica</p></li>
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/layout-mini.jpg" data-grande="galeria/layout.jpg" alt="Folha 03 · Layout do térreo" width="846" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Folha 03 · Layout do térreo</strong></span></button><p class="folha"><span>Folha 03</span>Layout</p></li>
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/cobertura-mini.jpg" data-grande="galeria/cobertura.jpg" alt="Folha 04 · Planta de cobertura" width="837" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Folha 04 · Planta de cobertura</strong></span></button><p class="folha"><span>Folha 04</span>Cobertura</p></li>
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/estrutura-mini.jpg" data-grande="galeria/estrutura.jpg" alt="Folha 05 · Planta de estrutura" width="899" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Folha 05 · Planta de estrutura</strong></span></button><p class="folha"><span>Folha 05</span>Estrutura</p></li>
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/cortes-mini.jpg" data-grande="galeria/cortes.jpg" alt="Folha 06 · Cortes AA, BB e CC" width="1100" height="606" loading="lazy"><span class="titulo-quadro"><strong>Folha 06 · Cortes AA, BB e CC</strong></span></button><p class="folha"><span>Folha 06</span>Cortes</p></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/corte-aa-mini.jpg" data-grande="galeria/corte-aa.jpg" alt="Folha 06 · Corte AA" width="1100" height="282" loading="lazy"><span class="titulo-quadro"><strong>Folha 06 · Corte AA</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/corte-bb-mini.jpg" data-grande="galeria/corte-bb.jpg" alt="Folha 06 · Corte BB" width="1100" height="169" loading="lazy"><span class="titulo-quadro"><strong>Folha 06 · Corte BB</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/corte-cc-mini.jpg" data-grande="galeria/corte-cc.jpg" alt="Folha 06 · Corte CC" width="1100" height="186" loading="lazy"><span class="titulo-quadro"><strong>Folha 06 · Corte CC</strong></span></button></li>
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/fachadas-mini.jpg" data-grande="galeria/fachadas.jpg" alt="Folha 07 · Fachadas norte, sul, leste e oeste" width="1100" height="723" loading="lazy"><span class="titulo-quadro"><strong>Folha 07 · Fachadas norte, sul, leste e oeste</strong></span></button><p class="folha"><span>Folha 07</span>Fachadas</p></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/fachadas-norte-sul-mini.jpg" data-grande="galeria/fachadas-norte-sul.jpg" alt="Folha 07 · Fachadas norte e sul" width="1100" height="339" loading="lazy"><span class="titulo-quadro"><strong>Folha 07 · Fachadas norte e sul</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/fachadas-leste-oeste-mini.jpg" data-grande="galeria/fachadas-leste-oeste.jpg" alt="Folha 07 · Fachadas leste e oeste" width="1100" height="526" loading="lazy"><span class="titulo-quadro"><strong>Folha 07 · Fachadas leste e oeste</strong></span></button></li>
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/paisagismo-mini.jpg" data-grande="galeria/paisagismo.jpg" alt="Folha 08 · Paisagismo: a praça" width="859" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Folha 08 · Paisagismo: a praça</strong></span></button><p class="folha"><span>Folha 08</span>Paisagismo</p></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/quadro-especies-mini.jpg" data-grande="galeria/quadro-especies.jpg" alt="Folha 08 · Quadro de espécies e legenda de pisos" width="1100" height="705" loading="lazy"><span class="titulo-quadro"><strong>Folha 08 · Quadro de espécies e legenda de pisos</strong></span></button></li>
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/volumetria-mini.jpg" data-grande="galeria/volumetria.jpg" alt="Folha 09 · Perspectivas isométricas" width="1100" height="686" loading="lazy"><span class="titulo-quadro"><strong>Folha 09 · Perspectivas isométricas</strong></span></button><p class="folha"><span>Folha 09</span>Volumetria</p></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/perspectiva-01-mini.jpg" data-grande="galeria/perspectiva-01.jpg" alt="Folha 09 · Perspectiva isométrica 01" width="1100" height="295" loading="lazy"><span class="titulo-quadro"><strong>Folha 09 · Perspectiva isométrica 01</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/perspectiva-02-mini.jpg" data-grande="galeria/perspectiva-02.jpg" alt="Folha 09 · Perspectiva isométrica 02" width="1100" height="378" loading="lazy"><span class="titulo-quadro"><strong>Folha 09 · Perspectiva isométrica 02</strong></span></button></li>
+        <li class="folha-capa desenho"><button type="button" class="quadro"><img src="galeria/folha-10-mini.jpg" data-grande="galeria/folha-10.jpg" alt="Folha 10 · Demolir e construir e detalhes" width="1100" height="868" loading="lazy"><span class="titulo-quadro"><strong>Folha 10 · Demolir e construir e detalhes</strong></span></button><p class="folha"><span>Folha 10</span>Demolir e construir e detalhes</p></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/demolir-construir-mini.jpg" data-grande="galeria/demolir-construir.jpg" alt="Folha 10 · Planta de demolir e construir" width="368" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Folha 10 · Planta de demolir e construir</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/detalhe-cumeeira-mini.jpg" data-grande="galeria/detalhe-cumeeira.jpg" alt="Folha 10 · Detalhe da cumeeira invertida" width="1100" height="846" loading="lazy"><span class="titulo-quadro"><strong>Folha 10 · Detalhe da cumeeira invertida</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/detalhe-fachada-norte-mini.jpg" data-grande="galeria/detalhe-fachada-norte.jpg" alt="Folha 10 · Detalhe do corte da fachada norte" width="613" height="1100" loading="lazy"><span class="titulo-quadro"><strong>Folha 10 · Detalhe do corte da fachada norte</strong></span></button></li>
+        <li class="desenho"><button type="button" class="quadro"><img src="galeria/detalhe-sanitario-mini.jpg" data-grande="galeria/detalhe-sanitario.jpg" alt="Folha 10 · Detalhe do sanitário acessível" width="1100" height="914" loading="lazy"><span class="titulo-quadro"><strong>Folha 10 · Detalhe do sanitário acessível</strong></span></button></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1300,7 +1327,7 @@
 
 <dialog class="visor" id="visor" aria-labelledby="visor-nome">
   <div class="visor-topo">
-    <span class="visor-nome" id="visor-nome">Galeria · Entre o Legado e a Continuidade</span>
+    <span class="visor-nome" id="visor-nome">Imagens · Entre o Legado e a Continuidade</span>
     <span class="visor-contador">1 / 12</span>
     <button type="button" class="visor-fechar" autofocus><svg viewBox="0 0 12 12" aria-hidden="true"><path d="m1 1 10 10M11 1 1 11" stroke="currentColor" stroke-width="1.6"/></svg>Fechar</button>
   </div>
@@ -1379,65 +1406,49 @@
     Object.keys(porId).concat('topo').forEach(function (id) { atual.observe(document.getElementById(id)); });
   })();
 
-  // galeria em tela cheia, como a do ArchDaily: mosaico na página, setas, contador e miniaturas
+  // galeria em tela cheia, como a do ArchDaily: mosaico de imagens e grade de pranchas, cada lista
+  // com a sua sequência no mesmo visor (setas, contador e miniaturas)
   (function () {
-    var lista = document.querySelector('.galeria');
+    var listas = document.querySelectorAll('.galeria, .pranchas');
     var visor = document.getElementById('visor');
-    if (!lista || !visor || typeof visor.showModal !== 'function') return;
+    if (!listas.length || !visor || typeof visor.showModal !== 'function') return;
 
-    var quadros = lista.querySelectorAll('.quadro');
-    var total = quadros.length;
-    var ver = document.querySelector('.ver-galeria');
     var imagem = visor.querySelector('.visor-imagem');
     var legenda = visor.querySelector('.visor-legenda');
     var contador = visor.querySelector('.visor-contador');
+    var nome = visor.querySelector('.visor-nome');
     var trilho = visor.querySelector('.visor-miniaturas');
     var palco = visor.querySelector('.visor-palco');
     var estreita = window.matchMedia('(max-width: 640px)');
     var marca = '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 14.5 16 7l9 7.5" fill="none" stroke="#EA5C1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 18.5 16 26l9-7.5" fill="none" stroke="#D6D7D7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    var aberta = null;   // a lista que está no visor
+    var quadros = [];
+    var total = 0;
     var minis = [];
     var atual = 0;
     var origem = null;
 
-    // o título vem do aviso "Em produção"; sem ele, do alt da imagem
-    function titulo(i) {
-      var s = quadros[i].querySelector('strong');
-      var img = quadros[i].querySelector('img');
+    // o título vem do <strong> escondido no quadro; sem ele, do alt da imagem
+    function titulo(q) {
+      var s = q.querySelector('strong');
+      var img = q.querySelector('img');
       return s ? s.textContent : (img ? img.alt : '');
     }
-    function foto(i) {
-      var img = quadros[i].querySelector('img');
+    function foto(q) {
+      var img = q.querySelector('img');
       return img ? (img.getAttribute('data-grande') || img.src) : '';
     }
 
-    // no mosaico ficam seis (cinco no celular), e o último mostra quantas faltam
-    var mais = document.createElement('span');
-    mais.className = 'mais';
-    mais.setAttribute('aria-hidden', 'true');
-    function marcarMais() {
-      var visiveis = estreita.matches ? 5 : 6;
-      quadros.forEach(function (q, i) {
-        q.classList.remove('tem-mais');
-        q.setAttribute('aria-label', 'Ampliar: ' + titulo(i));
-      });
-      if (total <= visiveis) {
-        if (mais.parentNode) mais.parentNode.removeChild(mais);
-        return;
-      }
-      mais.innerHTML = '+' + (total - visiveis) + '<small>Ver todas</small>';
-      quadros[visiveis - 1].appendChild(mais);
-      quadros[visiveis - 1].classList.add('tem-mais');
-      quadros[visiveis - 1].setAttribute('aria-label', 'Ver a galeria completa: mais ' + (total - visiveis) + ' imagens');
-    }
-
-    // as miniaturas só são montadas na primeira abertura, para não baixar todas as imagens com a página
+    // as miniaturas são montadas quando a lista é aberta, para não baixar todas as imagens com a página
     function montarMiniaturas() {
+      trilho.textContent = '';
+      minis = [];
       quadros.forEach(function (q, i) {
         var li = document.createElement('li');
         var b = document.createElement('button');
         b.type = 'button';
         b.className = 'visor-mini';
-        b.setAttribute('aria-label', (i + 1) + '. ' + titulo(i));
+        b.setAttribute('aria-label', (i + 1) + '. ' + titulo(q));
         var img = q.querySelector('img');
         if (img) {
           var m = document.createElement('img');
@@ -1456,18 +1467,19 @@
 
     function mostrar(i, suave) {
       atual = (i + total) % total;
-      var src = foto(atual);
+      var q = quadros[atual];
+      var src = foto(q);
       imagem.textContent = '';
       if (src) {
         var img = document.createElement('img');
         img.src = src;
-        img.alt = quadros[atual].querySelector('img').alt;
+        img.alt = q.querySelector('img').alt;
         img.draggable = false;
         imagem.appendChild(img);
       } else {
         imagem.innerHTML = '<div class="visor-vazio">' + marca + '<span>Em produção</span></div>';
       }
-      legenda.textContent = titulo(atual);
+      legenda.textContent = titulo(q);
       contador.textContent = (atual + 1) + ' / ' + total;
       minis.forEach(function (b, j) {
         if (j === atual) b.setAttribute('aria-current', 'true');
@@ -1478,30 +1490,65 @@
       trilho.scrollTo({ left: li.offsetLeft - (trilho.clientWidth - li.offsetWidth) / 2, behavior: suave ? 'smooth' : 'auto' });
       // as vizinhas já vão carregando
       [atual + 1, atual - 1].forEach(function (j) {
-        var s = foto((j + total) % total);
+        var s = foto(quadros[(j + total) % total]);
         if (s) new Image().src = s;
       });
     }
 
-    function abrir(i, botao) {
+    function abrir(lista, i, botao) {
       origem = botao;
-      if (!minis.length) montarMiniaturas();
+      if (aberta !== lista) {
+        aberta = lista;
+        quadros = Array.prototype.slice.call(lista.querySelectorAll('.quadro'));
+        total = quadros.length;
+        nome.textContent = (lista.getAttribute('data-nome') || 'Galeria') + ' · Entre o Legado e a Continuidade';
+        montarMiniaturas();
+      }
       document.documentElement.classList.add('visor-aberto');
       visor.showModal();
       mostrar(i);
     }
 
-    quadros.forEach(function (q, i) {
-      q.setAttribute('aria-haspopup', 'dialog');
-      q.addEventListener('click', function () { abrir(i, q); });
-    });
-    if (ver) {
-      ver.querySelector('.n').textContent = total;
-      ver.hidden = false;
-      ver.addEventListener('click', function () { abrir(0, ver); });
+    // no mosaico de imagens ficam seis (cinco no celular), e o último mostra quantas faltam
+    function mosaico(lista, qs) {
+      var n = qs.length;
+      var mais = document.createElement('span');
+      mais.className = 'mais';
+      mais.setAttribute('aria-hidden', 'true');
+      function marcar() {
+        var visiveis = estreita.matches ? 5 : 6;
+        qs.forEach(function (q) {
+          q.classList.remove('tem-mais');
+          q.setAttribute('aria-label', 'Ampliar: ' + titulo(q));
+        });
+        if (n <= visiveis) {
+          if (mais.parentNode) mais.parentNode.removeChild(mais);
+          return;
+        }
+        mais.innerHTML = '+' + (n - visiveis) + '<small>Ver todas</small>';
+        qs[visiveis - 1].appendChild(mais);
+        qs[visiveis - 1].classList.add('tem-mais');
+        qs[visiveis - 1].setAttribute('aria-label', 'Ver todas as imagens: mais ' + (n - visiveis));
+      }
+      var ver = lista.nextElementSibling;
+      if (ver && ver.classList.contains('ver-galeria')) {
+        ver.querySelector('.n').textContent = n;
+        ver.hidden = false;
+        ver.addEventListener('click', function () { abrir(lista, 0, ver); });
+      }
+      marcar();
+      estreita.addEventListener('change', marcar);
     }
-    marcarMais();
-    estreita.addEventListener('change', marcarMais);
+
+    Array.prototype.forEach.call(listas, function (lista) {
+      var qs = Array.prototype.slice.call(lista.querySelectorAll('.quadro'));
+      qs.forEach(function (q, i) {
+        q.setAttribute('aria-haspopup', 'dialog');
+        q.setAttribute('aria-label', 'Ampliar: ' + titulo(q));
+        q.addEventListener('click', function () { abrir(lista, i, q); });
+      });
+      if (lista.classList.contains('galeria')) mosaico(lista, qs);
+    });
 
     visor.querySelector('.anterior').addEventListener('click', function () { mostrar(atual - 1, true); });
     visor.querySelector('.proxima').addEventListener('click', function () { mostrar(atual + 1, true); });
